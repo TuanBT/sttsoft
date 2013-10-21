@@ -115,7 +115,7 @@
                     <!-- Message button with number of latest messages count-->
                     <li class="dropdown dropdown-big">
                         <a class="dropdown-toggle" href="/Cart/ShopingCart" >
-                            <i class="icon-coffee"></i>Giỏ hàng <span class="badge badge-important">6</span>
+                            <i class="icon-coffee"></i>Giỏ hàng <span class="badge badge-important">@Html.Action("BasketPartialView","Home")</span>
                         </a>
 
                         
@@ -204,8 +204,7 @@
                         </a>
 
                         <ul>
-                            <li><a href="widgets1.html">Widgets #1</a></li>
-                            <li><a href="widgets2.html">Widgets #2</a></li>
+                            <li>@{Html.RenderAction("GenreMenu","Home");}</li>
                         </ul>
                     </li>
                     @if ((string)Session["role"] == "A")
