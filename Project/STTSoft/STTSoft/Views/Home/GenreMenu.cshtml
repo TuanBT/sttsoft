@@ -1,0 +1,11 @@
+﻿@model IEnumerable<STTSoft.Models.Category>
+
+<ul id="categories">
+    @foreach (var genre in Model)
+    {
+        <li>@Html.ActionLink(genre.CatName,
+                     "LoadByCat", "Home",
+                 new { category = genre.CatName }, null)
+        </li>
+    }
+</ul>
