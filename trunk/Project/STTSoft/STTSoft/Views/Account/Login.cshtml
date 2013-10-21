@@ -1,6 +1,95 @@
-﻿@{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>Login</h2>
+<!-- Mirrored from responsivewebinc.com/premium/metroking/login.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 20 Oct 2013 23:30:03 GMT -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <!-- Title and other stuffs -->
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  <!-- Stylesheets -->
+  <link href="@Url.Content("~/Content/style/bootstrap.css")" rel="stylesheet" type="text/css" />
+  <link href="@Url.Content("~/Content/style/font-awesome.css")" rel="stylesheet" type="text/css" />
+   <link href="@Url.Content("~/Content/style/style.css")" rel="stylesheet" type="text/css" />
+  <!-- HTML5 Support for IE -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shim.js"></script>
+  <![endif]-->
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/Content/img/favicon/favicon.png">
+</head>
+
+<body>
+
+    <!-- Form area -->
+<div class="admin-form">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Widget starts -->
+            <div class="widget worange">
+              <!-- Widget head -->
+              <div class="widget-head">
+                <i class="icon-lock"></i> Login 
+              </div>
+
+              <div class="widget-content">
+                <div class="padd">
+                  <!-- Login form -->
+                  <form class="form-horizontal" action="/Account/Login" method="POST">
+                    <!-- Email -->
+                    <div class="form-group">
+                      <label class="control-label col-lg-3" for="inputEmail">User Name</label>
+                      <div class="col-lg-9">
+                        <input type="text" class="form-control" id="inputEmail" name="txtUsername" placeholder="User name">
+                      </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="form-group">
+                      <label class="control-label col-lg-3" for="inputPassword">Password</label>
+                      <div class="col-lg-9">
+                        <input type="password" class="form-control" id="inputPassword" name="txtPassword" placeholder="Password">
+                      </div>
+                    </div>
+                    <!-- Remember me checkbox and sign in button -->
+                    <div class="form-group">
+					<div class="col-lg-9 col-lg-offset-3">
+					</div>
+					</div>
+                        <div class="col-lg-9 col-lg-offset-3">
+							<button type="submit" class="btn btn-danger">Login</button>
+							<button type="reset" class="btn btn-default">Reset</button>
+						</div>
+                    <br />
+                  </form>
+				  
+				</div>
+                </div>
+              
+                <div class="widget-foot">
+                    <p> Not Registred? <a href="@Url.Action("Register","Account")">Register here</a></p>
+                    <p> <a href="@Url.Action("Index","Home")">Trang chủ</a></p>
+                </div>
+            </div>  
+      </div>
+    </div>
+  </div> 
+</div>
+	
+		
+    <!-- JS -->
+<script src="@Url.Content("~/Content/js/jquery.js")"></script>
+<script src="@Url.Content("~/Content/js/bootstrap.js")"></script>
+
+</body>
+
+<!-- Mirrored from responsivewebinc.com/premium/metroking/login.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 20 Oct 2013 23:30:03 GMT -->
+</html>

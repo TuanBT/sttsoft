@@ -3,4 +3,141 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ShopingCart</h2>
+<!-- Page heading -->
+<div class="page-head">
+    <!-- Page heading -->
+    <h2 class="pull-left">Shopping Cart
+			  <!-- page meta -->
+    </h2>
+    <div class="clearfix"></div>
+
+</div>
+<!-- Page heading ends -->
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <div class="widget wred">
+            <div class="widget-head">
+                <div class="pull-left">Cart</div>
+                <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="widget-content medias">
+
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Date</th>
+                            <th>Giá</th>
+                            <th>Control</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <img src="img/user.jpg" alt=""></td>
+                            <td><a href="#">some_file_name</a><p>JPG</p>
+                            </td>
+                            <td>Ashok</td>
+                            <td>23/12/2012</td>
+                            <td>1.25 MB</td>
+                            <td>
+
+                                <button class="btn btn-sm btn-danger"><i class="icon-pencil"></i></button>
+                                <button class="btn btn-sm btn-info"><i class="icon-remove"></i></button>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <img src="img/user.jpg" alt=""></td>
+                            <td><a href="#">some_file_name</a><p>PNG</p>
+                            </td>
+                            <td>Ravi</td>
+                            <td>13/02/2012</td>
+                            <td>2.6 MB</td>
+                            <td>
+
+                                <button class="btn btn-sm btn-danger"><i class="icon-pencil"></i></button>
+                                <button class="btn btn-sm btn-info"><i class="icon-remove"></i></button>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <img src="img/user.jpg" alt=""></td>
+                            <td><a href="#">some_file_name</a><p>GIF</p>
+                            </td>
+                            <td>Babu</td>
+                            <td>12/03/2012</td>
+                            <td>4 MB</td>
+                            <td>
+
+                                <button class="btn btn-sm btn-danger"><i class="icon-pencil"></i></button>
+                                <button class="btn btn-sm btn-info"><i class="icon-remove"></i></button>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <img src="img/user.jpg" alt=""></td>
+                            <td><a href="#">some_file_name</a><p>MPEG</p>
+                            </td>
+                            <td>Ganga</td>
+                            <td>03/11/2012</td>
+                            <td>10 MB</td>
+                            <td>
+
+                                <button class="btn btn-sm btn-danger"><i class="icon-pencil"></i></button>
+                                <button class="btn btn-sm btn-info"><i class="icon-remove"></i></button>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <img src="img/user.jpg" alt=""></td>
+                            <td><a href="#">some_file_name</a><p>FLV</p>
+                            </td>
+                            <td>Munarai</td>
+                            <td>13/32/2012</td>
+                            <td>4 MB</td>
+                            <td>
+
+                                <button class="btn btn-sm btn-danger"><i class="icon-pencil"></i></button>
+                                <button class="btn btn-sm btn-info"><i class="icon-remove"></i></button>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="widget-foot">
+
+                <button type="button" class="btn btn-primary">Thanh toán</button>
+                <a href="@Url.Action("Index","Home")" class="btn btn-default">Tiếp tục mua hàng</a>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
