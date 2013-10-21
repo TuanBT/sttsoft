@@ -2,93 +2,108 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+@using STTSoft.Models
+@{
+    Product product = ViewBag.ProDetail;
+}
+@{
+    List<Comment> comment = ViewBag.list;
+}
 <!-- Page heading -->
 <div class="page-head">
     <!-- Page heading -->
-    <h2 class="pull-left">Chi tiết sản phẩm
-			  <!-- page meta -->
+    <h2 class="pull-left">
+        Chi tiết sản phẩm
+        <!-- page meta -->
     </h2>
-    <div class="clearfix"></div>
-
+    <div class="clearfix">
+    </div>
 </div>
 <!-- Page heading ends -->
-
 <div class="row">
     <div class="col-md-5">
-        <img src="/img/user.jpg" alt="" style="width: 400px; height: 450px">
+        <img src="@product.ProImage" alt="" style="width: 400px; height: 450px">
     </div>
     <div class="col-md-7">
-        <h2 class="text-danger">Tên sản phẩm </h2>
-        <p class="text-danger">Giá sản phẩm</p>
-        <label>Số lượng</label>
-        <input style="width: 34px" type="text" class="form-control" value="1">
-        <button class="btn btn-info btn-sm" style="margin-top: 5px">Add to cart</button>
-        <h3>Mô tả sản phẩm:</h3>
-        <p>...............................  </p>
+        <h2 class="text-danger">@product.ProName
+        </h2>
+        <p class="text-danger" style="color: red">@product.ProPrice.ToString("0,0") VND</p>
+        <label>
+            Số lượng</label>
+        <form action="/Home/AddToCart" method="POST">
+            <input type="hidden" name="proId" value="@product.ProId"/>
+            <input style="width: 34px" type="text" class="form-control" value="1" name="cartQuantity">
+            <button class="btn btn-info btn-sm" style="margin-top: 5px">
+                Add to cart</button>
+        </form>
+        <h3>
+            Mô tả sản phẩm:</h3>
+        <p>@product.ProDetail</p>
     </div>
-
-
 </div>
+<form action="/Home/PostComment" method="POST">
 <div class="row">
     <div class="col-md-12">
         <div class="widget wgreen">
             <div class="widget-head">
-                <div class="pull-left">Nhận xét</div>
+                <div class="pull-left">
+                    Nhận xét</div>
                 <div class="widget-icons pull-right">
                     <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-
-            <div class="widget-content">
-                <div class="padd">
-
-                    <div class="user">
-                        <div class="user-pic">
-                            <!-- User pic -->
-                            <a href="#">
-                                <img src="img/user-big.jpg" alt=""></a>
-                        </div>
-
-                        <div class="user-details">
-                            <h6>Tên người dùng</h6>
-                            <p>Nội dung comment</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <hr>
+                <div class="clearfix">
                 </div>
+            </div>
+            <div style="overflow: scroll; height: 400px">
+                @foreach (var item in comment)
+                {
+                    <div class="widget-content">
+                        <div class="padd">
+                            <div class="user">
+                                <div class="user-pic">
+                                    <!-- User pic -->
+                                    <a href="#">
+                                        <img src="img/user-big.jpg" alt=""></a>
+                                </div>
+                                <div class="user-details">
+                                    <h6>
+                                        Tên người dùng:@item.AccName</h6>
+                                    <p>
+                                        @item.ComContent</p>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-
     <div class="col-md-8">
-
-
         <div class="widget wgreen">
-
             <div class="widget-head">
-                <div class="pull-left">Forms</div>
+                <div class="pull-left">
+                    Forms</div>
                 <div class="widget-icons pull-right">
-                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
-                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a><a href="#" class="wclose">
+                        <i class="icon-remove"></i></a>
                 </div>
-                <div class="clearfix"></div>
+                <div class="clearfix">
+                </div>
             </div>
-
             <div class="widget-content" style="display: block;">
                 <div class="padd">
-                    <form class="form-horizontal" role="form">
-                         
-                         <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
-                         <button type="submit" class="btn btn-info" style="margin-top: 5px">Send</button>
-                    </form>
+                    <input type="hidden" name="proId" value="@product.ProId"/>
+                    <textarea class="form-control" rows="3" placeholder="Textarea" name="txtComment"></textarea>
+                    <button type="submit" class="btn btn-info" style="margin-top: 5px">
+                        Send</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</form>
