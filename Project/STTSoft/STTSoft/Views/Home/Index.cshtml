@@ -1,6 +1,10 @@
-﻿@{
+﻿@using STTSoft.Models
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    List<Product> list = ViewBag.Product;  
 }
 
 <!-- Page heading -->
@@ -14,13 +18,14 @@
 </div>
 <!-- Page heading ends -->
 <div class="row">
-
+@foreach(var p in list)
+{
     <div class="col-md-4">
         <div class="widget worange">
             <div class="widget-head">
                 
                 <!--Tên sản phẩm -->
-                <div class="pull-left">Windown 3000</div>
+                <div class="pull-left"> <a href="../Home/Detail?ProId=@p.ProId">@p.ProName</a></div>
                 <div class="widget-icons pull-right">
                     <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
 
@@ -33,24 +38,21 @@
                     <div class="user">
                         <div class="user-pic">
                             <!-- Hình ảnh sản phẩm -->
-                            <a href="#">
-                                <img src="img/user-big.jpg" alt=""></a>
+                            <a href="../Home/Detail?ProId=@p.ProId">
+                                <img src="../../Content/img/productImage/CallOfDuty.jpg" alt=""></a>
                         </div>
 
                         <div class="user-details">
                             <!--Giá sản phẩm -->
-                            <h6>Vài triệu</h6>
+                            <h6>@p.ProPrice.ToString("0,0") VND</h6>
                             <!--Short description -->
-                            <p>Maecenas quis tristique turpis. Nulla facilisi. Duis sed velit at ac ultrices magna. Aliquam consequat, purus vitae auctor ullamcorper.</p>
+                            <p>@p.ProDetail</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
-
-
                 </div>
             </div>
         </div>
-
-
     </div>
+}
 </div>
