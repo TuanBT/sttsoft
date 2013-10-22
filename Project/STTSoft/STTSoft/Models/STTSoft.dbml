@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="STTSOFT" Class="STTSoftDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=127.0.0.1;Initial Catalog=STTSOFT;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="STTSOFTConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=STTSOFT;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="STTSOFTConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="AccName" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -20,7 +20,7 @@
       <Column Name="ProDetail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ProImage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CatId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ProPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Association Name="Product_Comment" Member="Comments" ThisKey="ProId" OtherKey="ProId" Type="Comment" />
       <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProId" OtherKey="ProId" Type="OrderDetail" />
       <Association Name="Category_Product" Member="Category" ThisKey="CatId" OtherKey="CatId" Type="Category" IsForeignKey="true" />
@@ -62,6 +62,7 @@
       <Column Name="AccName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="OrTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="OrDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrdSaler" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Order_OrderDetail" Member="OrderDetails" ThisKey="OrId" OtherKey="OrId" Type="OrderDetail" />
       <Association Name="Account_Order" Member="Account" ThisKey="AccName" OtherKey="AccName" Type="Account" IsForeignKey="true" />
     </Type>
@@ -72,6 +73,7 @@
       <Column Name="ProId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="OrdQuantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="OrId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrdTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Association Name="Order_OrderDetail" Member="Order" ThisKey="OrId" OtherKey="OrId" Type="Order" IsForeignKey="true" />
       <Association Name="Product_OrderDetail" Member="Product" ThisKey="ProId" OtherKey="ProId" Type="Product" IsForeignKey="true" />
     </Type>
