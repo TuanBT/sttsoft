@@ -2,6 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STTSoft", "STTSoft\STTSoft.csproj", "{270D5F5A-AAC6-409F-B183-D0581D01503B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2147BC60-5E9D-4449-8700-63DA95322810} = {2147BC60-5E9D-4449-8700-63DA95322810}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STTSoftService", "STTSoftService\STTSoftService.csproj", "{2147BC60-5E9D-4449-8700-63DA95322810}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +18,10 @@ Global
 		{270D5F5A-AAC6-409F-B183-D0581D01503B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{270D5F5A-AAC6-409F-B183-D0581D01503B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{270D5F5A-AAC6-409F-B183-D0581D01503B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2147BC60-5E9D-4449-8700-63DA95322810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2147BC60-5E9D-4449-8700-63DA95322810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2147BC60-5E9D-4449-8700-63DA95322810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2147BC60-5E9D-4449-8700-63DA95322810}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
