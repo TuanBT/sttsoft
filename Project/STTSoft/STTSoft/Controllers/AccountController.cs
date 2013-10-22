@@ -60,9 +60,66 @@ namespace STTSoft.Controllers
         }
 
 
-        public ActionResult Register()
+        [HttpGet]
+        public ActionResult Register(int error = 0)
         {
-            return PartialView();
+            // Kiểm tra tên đăng nhập hoặc email có tồn tại chưa
+            if (error == 1)
+            {
+                ViewBag.Status = "Username or Email existed!";
+            }
+            else
+            {
+                ViewBag.Status = string.Empty;
+            }
+            return PartialView("Register");
+        }
+
+        //Đăng kí
+        [HttpPost]
+        public ActionResult Register(string sendEmail, string subject, string message)
+        {
+            ViewBag.Status = string.Empty;
+            string username = Request.Params["username"];
+            string password = Request.Params["password"];
+            string role = Request.Params["optionsDl"];
+            string name = Request.Params["name"];
+            string email = Request.Params["sendEmail"];
+            string phone = Request.Params["phone"];
+            string action = Request.Params["Create"];
+            if ("Tạo mới".Equals(action))
+            {
+                // Kiểm tra tên đăng nhập và email
+                Account t = db.Accounts.FirstOrDefault(ac => ac.AccName.Equals(username) || ac.AccMail.Equals(email));
+                //Nếu tên đăng nhập hoặc email tồn tại
+                if (t != null)
+                {
+                    ViewBag.Status = "Username or Email existed!";
+                    return RedirectToAction("Register", new { error = 1 });
+                }
+                else
+                {
+                    ViewBag.Status = string.Empty;
+                    var account = new Account
+                    {
+                        AccName = username,
+                        AccPass = password,
+                        AccRole = role,
+                        AccMail = email,
+                        AccPhone = phone
+                    };
+                    try
+                    {
+                        db.Accounts.InsertOnSubmit(account);
+                        db.SubmitChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        return View("Register");
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult ForgetPass()

@@ -19,3 +19,15 @@ D:\FPT University\Subject\SAD\STTSoft\Project\STTSoft\STTSoft\bin\System.Web.Web
 D:\FPT University\Subject\SAD\STTSoft\Project\STTSoft\STTSoft\bin\System.Web.WebPages.Razor.xml
 D:\FPT University\Subject\SAD\STTSoft\Project\STTSoft\STTSoft\obj\Debug\STTSoft.dll
 D:\FPT University\Subject\SAD\STTSoft\Project\STTSoft\STTSoft\obj\Debug\STTSoft.pdb
+E:\SADAS2\Project\STTSoft\STTSoft\bin\STTSoft.dll
+E:\SADAS2\Project\STTSoft\STTSoft\bin\STTSoft.pdb
+E:\SADAS2\Project\STTSoft\STTSoft\bin\EntityFramework.xml
+E:\SADAS2\Project\STTSoft\STTSoft\bin\System.Web.Helpers.xml
+E:\SADAS2\Project\STTSoft\STTSoft\bin\System.Web.Mvc.xml
+E:\SADAS2\Project\STTSoft\STTSoft\bin\System.Web.Razor.xml
+E:\SADAS2\Project\STTSoft\STTSoft\bin\System.Web.WebPages.xml
+E:\SADAS2\Project\STTSoft\STTSoft\bin\System.Web.WebPages.Deployment.xml
+E:\SADAS2\Project\STTSoft\STTSoft\bin\System.Web.WebPages.Razor.xml
+E:\SADAS2\Project\STTSoft\STTSoft\obj\Debug\STTSoft.csprojResolveAssemblyReference.cache
+E:\SADAS2\Project\STTSoft\STTSoft\obj\Debug\STTSoft.dll
+E:\SADAS2\Project\STTSoft\STTSoft\obj\Debug\STTSoft.pdb
