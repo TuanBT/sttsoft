@@ -141,24 +141,36 @@ namespace STTSoft.STTSoftService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="STTSoftService.AdminServiceSoap")]
     public interface AdminServiceSoap {
         
-        // CODEGEN: Generating message contract since element name ListUserResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListUser", ReplyAction="*")]
-        STTSoft.STTSoftService.ListUserResponse ListUser(STTSoft.STTSoftService.ListUserRequest request);
+        // CODEGEN: Generating message contract since element name AccountListResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AccountList", ReplyAction="*")]
+        STTSoft.STTSoftService.AccountListResponse AccountList(STTSoft.STTSoftService.AccountListRequest request);
+        
+        // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AccountInsert", ReplyAction="*")]
+        STTSoft.STTSoftService.AccountInsertResponse AccountInsert(STTSoft.STTSoftService.AccountInsertRequest request);
+        
+        // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AccountEdit", ReplyAction="*")]
+        STTSoft.STTSoftService.AccountEditResponse AccountEdit(STTSoft.STTSoftService.AccountEditRequest request);
+        
+        // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AccountDelete", ReplyAction="*")]
+        STTSoft.STTSoftService.AccountDeleteResponse AccountDelete(STTSoft.STTSoftService.AccountDeleteRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class ListUserRequest {
+    public partial class AccountListRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListUser", Namespace="http://tempuri.org/", Order=0)]
-        public STTSoft.STTSoftService.ListUserRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountList", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountListRequestBody Body;
         
-        public ListUserRequest() {
+        public AccountListRequest() {
         }
         
-        public ListUserRequest(STTSoft.STTSoftService.ListUserRequestBody Body) {
+        public AccountListRequest(STTSoft.STTSoftService.AccountListRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -167,9 +179,9 @@ namespace STTSoft.STTSoftService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class ListUserRequestBody {
+    public partial class AccountListRequestBody {
         
-        public ListUserRequestBody() {
+        public AccountListRequestBody() {
         }
     }
     
@@ -177,15 +189,15 @@ namespace STTSoft.STTSoftService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class ListUserResponse {
+    public partial class AccountListResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListUserResponse", Namespace="http://tempuri.org/", Order=0)]
-        public STTSoft.STTSoftService.ListUserResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountListResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountListResponseBody Body;
         
-        public ListUserResponse() {
+        public AccountListResponse() {
         }
         
-        public ListUserResponse(STTSoft.STTSoftService.ListUserResponseBody Body) {
+        public AccountListResponse(STTSoft.STTSoftService.AccountListResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -194,16 +206,256 @@ namespace STTSoft.STTSoftService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class ListUserResponseBody {
+    public partial class AccountListResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public STTSoft.STTSoftService.AccountDTO[] ListUserResult;
+        public STTSoft.STTSoftService.AccountDTO[] AccountListResult;
         
-        public ListUserResponseBody() {
+        public AccountListResponseBody() {
         }
         
-        public ListUserResponseBody(STTSoft.STTSoftService.AccountDTO[] ListUserResult) {
-            this.ListUserResult = ListUserResult;
+        public AccountListResponseBody(STTSoft.STTSoftService.AccountDTO[] AccountListResult) {
+            this.AccountListResult = AccountListResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AccountInsertRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountInsert", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountInsertRequestBody Body;
+        
+        public AccountInsertRequest() {
+        }
+        
+        public AccountInsertRequest(STTSoft.STTSoftService.AccountInsertRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccountInsertRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string accName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string accRole;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int accLevel;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string accMail;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string accPhone;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string accPass;
+        
+        public AccountInsertRequestBody() {
+        }
+        
+        public AccountInsertRequestBody(string accName, string accRole, int accLevel, string accMail, string accPhone, string accPass) {
+            this.accName = accName;
+            this.accRole = accRole;
+            this.accLevel = accLevel;
+            this.accMail = accMail;
+            this.accPhone = accPhone;
+            this.accPass = accPass;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AccountInsertResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountInsertResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountInsertResponseBody Body;
+        
+        public AccountInsertResponse() {
+        }
+        
+        public AccountInsertResponse(STTSoft.STTSoftService.AccountInsertResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccountInsertResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool AccountInsertResult;
+        
+        public AccountInsertResponseBody() {
+        }
+        
+        public AccountInsertResponseBody(bool AccountInsertResult) {
+            this.AccountInsertResult = AccountInsertResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AccountEditRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountEdit", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountEditRequestBody Body;
+        
+        public AccountEditRequest() {
+        }
+        
+        public AccountEditRequest(STTSoft.STTSoftService.AccountEditRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccountEditRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string accName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string accRole;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int accLevel;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string accMail;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string accPhone;
+        
+        public AccountEditRequestBody() {
+        }
+        
+        public AccountEditRequestBody(string accName, string accRole, int accLevel, string accMail, string accPhone) {
+            this.accName = accName;
+            this.accRole = accRole;
+            this.accLevel = accLevel;
+            this.accMail = accMail;
+            this.accPhone = accPhone;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AccountEditResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountEditResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountEditResponseBody Body;
+        
+        public AccountEditResponse() {
+        }
+        
+        public AccountEditResponse(STTSoft.STTSoftService.AccountEditResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccountEditResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool AccountEditResult;
+        
+        public AccountEditResponseBody() {
+        }
+        
+        public AccountEditResponseBody(bool AccountEditResult) {
+            this.AccountEditResult = AccountEditResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AccountDeleteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountDelete", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountDeleteRequestBody Body;
+        
+        public AccountDeleteRequest() {
+        }
+        
+        public AccountDeleteRequest(STTSoft.STTSoftService.AccountDeleteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccountDeleteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string accName;
+        
+        public AccountDeleteRequestBody() {
+        }
+        
+        public AccountDeleteRequestBody(string accName) {
+            this.accName = accName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AccountDeleteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AccountDeleteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.AccountDeleteResponseBody Body;
+        
+        public AccountDeleteResponse() {
+        }
+        
+        public AccountDeleteResponse(STTSoft.STTSoftService.AccountDeleteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccountDeleteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool AccountDeleteResult;
+        
+        public AccountDeleteResponseBody() {
+        }
+        
+        public AccountDeleteResponseBody(bool AccountDeleteResult) {
+            this.AccountDeleteResult = AccountDeleteResult;
         }
     }
     
@@ -235,15 +487,63 @@ namespace STTSoft.STTSoftService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        STTSoft.STTSoftService.ListUserResponse STTSoft.STTSoftService.AdminServiceSoap.ListUser(STTSoft.STTSoftService.ListUserRequest request) {
-            return base.Channel.ListUser(request);
+        STTSoft.STTSoftService.AccountListResponse STTSoft.STTSoftService.AdminServiceSoap.AccountList(STTSoft.STTSoftService.AccountListRequest request) {
+            return base.Channel.AccountList(request);
         }
         
-        public STTSoft.STTSoftService.AccountDTO[] ListUser() {
-            STTSoft.STTSoftService.ListUserRequest inValue = new STTSoft.STTSoftService.ListUserRequest();
-            inValue.Body = new STTSoft.STTSoftService.ListUserRequestBody();
-            STTSoft.STTSoftService.ListUserResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).ListUser(inValue);
-            return retVal.Body.ListUserResult;
+        public STTSoft.STTSoftService.AccountDTO[] AccountList() {
+            STTSoft.STTSoftService.AccountListRequest inValue = new STTSoft.STTSoftService.AccountListRequest();
+            inValue.Body = new STTSoft.STTSoftService.AccountListRequestBody();
+            STTSoft.STTSoftService.AccountListResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).AccountList(inValue);
+            return retVal.Body.AccountListResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.AccountInsertResponse STTSoft.STTSoftService.AdminServiceSoap.AccountInsert(STTSoft.STTSoftService.AccountInsertRequest request) {
+            return base.Channel.AccountInsert(request);
+        }
+        
+        public bool AccountInsert(string accName, string accRole, int accLevel, string accMail, string accPhone, string accPass) {
+            STTSoft.STTSoftService.AccountInsertRequest inValue = new STTSoft.STTSoftService.AccountInsertRequest();
+            inValue.Body = new STTSoft.STTSoftService.AccountInsertRequestBody();
+            inValue.Body.accName = accName;
+            inValue.Body.accRole = accRole;
+            inValue.Body.accLevel = accLevel;
+            inValue.Body.accMail = accMail;
+            inValue.Body.accPhone = accPhone;
+            inValue.Body.accPass = accPass;
+            STTSoft.STTSoftService.AccountInsertResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).AccountInsert(inValue);
+            return retVal.Body.AccountInsertResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.AccountEditResponse STTSoft.STTSoftService.AdminServiceSoap.AccountEdit(STTSoft.STTSoftService.AccountEditRequest request) {
+            return base.Channel.AccountEdit(request);
+        }
+        
+        public bool AccountEdit(string accName, string accRole, int accLevel, string accMail, string accPhone) {
+            STTSoft.STTSoftService.AccountEditRequest inValue = new STTSoft.STTSoftService.AccountEditRequest();
+            inValue.Body = new STTSoft.STTSoftService.AccountEditRequestBody();
+            inValue.Body.accName = accName;
+            inValue.Body.accRole = accRole;
+            inValue.Body.accLevel = accLevel;
+            inValue.Body.accMail = accMail;
+            inValue.Body.accPhone = accPhone;
+            STTSoft.STTSoftService.AccountEditResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).AccountEdit(inValue);
+            return retVal.Body.AccountEditResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.AccountDeleteResponse STTSoft.STTSoftService.AdminServiceSoap.AccountDelete(STTSoft.STTSoftService.AccountDeleteRequest request) {
+            return base.Channel.AccountDelete(request);
+        }
+        
+        public bool AccountDelete(string accName) {
+            STTSoft.STTSoftService.AccountDeleteRequest inValue = new STTSoft.STTSoftService.AccountDeleteRequest();
+            inValue.Body = new STTSoft.STTSoftService.AccountDeleteRequestBody();
+            inValue.Body.accName = accName;
+            STTSoft.STTSoftService.AccountDeleteResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).AccountDelete(inValue);
+            return retVal.Body.AccountDeleteResult;
         }
     }
 }

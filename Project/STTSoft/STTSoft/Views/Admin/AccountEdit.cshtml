@@ -4,3 +4,15 @@
 }
 
 <h2>AccountEdit</h2>
+
+
+@model STTSoft.Models.Account
+    
+<form action="/Admin/AccountEdit" method="POST">     
+    Name: <input name="txtName" value="@Model.AccName"/>
+    Role: <input name="txtRole" value="@Model.AccRole"/>
+    Level: <input name="txtLevel" value="@Model.AccLevel"/>
+    Mail: <input name="txtMail" value="@Model.AccMail"/>
+    Phone: <input name="txtPhone" value="@Model.AccPhone"/>
+    <button type="submit">Submit</button>
+</form>  

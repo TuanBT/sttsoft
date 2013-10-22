@@ -5,7 +5,27 @@
 @model List<STTSoft.STTSoftService.AccountDTO>
 
 <h2>AccountList</h2>
-@foreach(var user in Model)
-{
-    @user.AccName
-}
+
+<table border="1">
+    <tr style="color: blue">
+        <th>Name</th>
+        <th>Role</th>
+        <th>Level</th>
+        <th>Mail</th>
+        <th>Phone</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach(var account in Model)
+    {
+        <tr>
+            <td>@account.AccName</td>
+            <td>@account.AccRole</td>
+            <td>@account.AccLevel</td>
+            <td>@account.AccMail</td>
+            <td>@account.AccPhone</td>
+            <td><a href="/Admin/AccountEdit?accName=@account.AccName">Edit</a></td>
+            <td><a href="/Admin/AccountDelete?accName=@account.AccName">Delete</a></td>
+        </tr>
+    }
+</table>
