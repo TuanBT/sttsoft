@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using STTSoftService.DTO;
 
 namespace STTSoftService
 {
@@ -16,13 +17,26 @@ namespace STTSoftService
     // [System.Web.Script.Services.ScriptService]
     public class AdminService : System.Web.Services.WebService
     {
-        STTSoftDataContext db = new STTSoftDataContext();
+        
 
         [WebMethod]
-        public List<Account> ListUser()
+        public List<AccountDTO> ListUser()
         {
-            var listAccount = db.Accounts.ToList();
-            return listAccount;
+            var db = new STTSoftDataContext();
+            var listAccount =
+                (from acc in db.Accounts
+                select new AccountDTO
+                           {
+                              AccName = acc.AccName,
+                              AccLevel = acc.AccLevel,
+                              AccMail = acc.AccMail,
+                              AccPass = acc.AccPass,
+                              AccPhone = acc.AccPhone,
+                              AccRole = acc.AccRole
+                              
+                           }).ToList();
+
+            return  listAccount;
         }
     }
 }
