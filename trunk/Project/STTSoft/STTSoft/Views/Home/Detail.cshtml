@@ -9,6 +9,9 @@
 @{
     List<Comment> comment = ViewBag.list;
 }
+@{
+    List<Account> accounts = ViewBag.AccDL;
+}
 <!-- Page heading -->
 <div class="page-head">
     <!-- Page heading -->
@@ -33,6 +36,10 @@
         <form action="/Home/AddToCart" method="POST">
             <input type="hidden" name="proId" value="@product.ProId"/>
             <input style="width: 34px" type="text" class="form-control" value="1" name="cartQuantity">
+            @foreach (var adl in accounts)
+            {
+            <p><input type="radio" name="AccDl" id="abc" value="@adl.AccName" checked="checked"/>Đại lý: @adl.AccName</p>
+            }
             <button class="btn btn-info btn-sm" style="margin-top: 5px">
                 Add to cart</button>
         </form>
