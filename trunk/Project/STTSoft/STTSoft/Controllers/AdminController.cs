@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using STTSoft.Models;
 using STTSoft.STTSoftService;
 namespace STTSoft.Controllers
 {
@@ -11,10 +12,7 @@ namespace STTSoft.Controllers
         //
         // GET: /Admin/
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+        STTSoftDataContext db = new STTSoftDataContext();
 
         #region Product
         public ActionResult ProductList()
@@ -64,10 +62,11 @@ namespace STTSoft.Controllers
 
         #region Account
 
+        AdminServiceSoapClient service = new AdminServiceSoapClient();
+
         public ActionResult AccountList()
         {
-            var service = new AdminServiceSoapClient();
-            var listUser = service.ListUser().ToList();
+            var listUser = service.AccountList().ToList();
             return View(listUser);
         }
 
@@ -76,13 +75,43 @@ namespace STTSoft.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AccountInsert(string txtName, string txtRole, string txtLevel, string txtMail, string txtPhone,string txtPass)
+        {
+            if (service.AccountInsert(txtName, txtRole, Convert.ToInt32(txtLevel), txtMail, txtPhone, txtPass))
+            {
+                return RedirectToAction("AccountList", "Admin");
+            }
+            //if false
+            return View();
+        }
+
         public ActionResult AccountEdit()
         {
-            return View();
+            var accName = Request.QueryString["accName"];
+            var account = db.Accounts.FirstOrDefault(a => a.AccName == accName);
+            return View(account);
+        }
+
+        [HttpPost]
+        public ActionResult AccountEdit(string txtName, string txtRole, int txtLevel, string txtMail, string txtPhone)
+        {
+            if(service.AccountEdit(txtName,txtRole,Convert.ToInt32(txtLevel),txtMail,txtPhone))
+            {
+                return RedirectToAction("AccountList", "Admin");
+            }
+            //if false
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult AccountDelete()
         {
+            var accName = Request.QueryString["accName"];
+            if(service.AccountDelete(accName))
+            {
+                return RedirectToAction("AccountList", "Admin");
+            }
+            //If false
             return View();
         }
 

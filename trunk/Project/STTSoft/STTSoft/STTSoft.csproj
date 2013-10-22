@@ -312,13 +312,13 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Service References\STTSoftService\AdminService.disco" />
-    <Content Include="Service References\STTSoftService\configuration91.svcinfo" />
-    <Content Include="Service References\STTSoftService\configuration.svcinfo" />
-    <Content Include="Service References\STTSoftService\Reference.svcmap">
+    <None Include="Service References\STTSoftService\AdminService.disco" />
+    <None Include="Service References\STTSoftService\configuration91.svcinfo" />
+    <None Include="Service References\STTSoftService\configuration.svcinfo" />
+    <None Include="Service References\STTSoftService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -370,7 +370,7 @@
     <Content Include="Views\Home\GenreMenu.cshtml" />
     <Content Include="Views\Home\LoadByCat.cshtml" />
     <Content Include="Views\Home\BasketPartialView.cshtml" />
-    <Content Include="Service References\STTSoftService\AdminService.wsdl" />
+    <None Include="Service References\STTSoftService\AdminService.wsdl" />
     <Content Include="Service References\STTSoftService\STTSoft.STTSoftService.AccountDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
