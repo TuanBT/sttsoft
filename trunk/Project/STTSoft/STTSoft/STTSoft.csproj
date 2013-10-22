@@ -119,6 +119,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\STTSoft.dll" />
+    <Content Include="bin\STTSoft.pdb" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Providers.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\delete.gif" />
     <Content Include="Content\img\favicon\favicon.png" />
@@ -303,7 +321,18 @@
       <LastGenOutput>STTSoft.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="obj\Debug\build.force" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\STTSoft.csprojResolveAssemblyReference.cache" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="obj\Debug\STTSoft.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\STTSoft.dll" />
+    <Content Include="obj\Debug\STTSoft.pdb" />
+    <Content Include="obj\Debug\TempPE\Models.STTSoft.designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Service References.AdminService.Reference.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Service References.STTSoftService.Reference.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Service References.STTSoftService.Reference1.cs.dll" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -319,13 +348,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -374,6 +396,13 @@
     <Content Include="Service References\STTSoftService\STTSoft.STTSoftService.AccountDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
