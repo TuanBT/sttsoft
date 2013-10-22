@@ -15,26 +15,27 @@
 <!-- Page heading ends -->
 @using STTSoft.Controllers
 @{List<Prodetail> list = ViewBag.ListCartDetail;}
-<div class="row">
-    <div class="col-md-12">
-        <div class="widget wred">
-            <div class="widget-head">
-                <div class="pull-left">
-                    Cart</div>
-                <div class="widget-icons pull-right">
-                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+@foreach (var p in list)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget wred">
+                <div class="widget-head">
+                    <div class="pull-left">
+                        Cart</div>
+                    <div class="widget-icons pull-right">
+                        <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+                    </div>
+                    <div class="clearfix">
+                    </div>
                 </div>
-                <div class="clearfix">
-                </div>
-            </div>
-            <div class="widget-content medias">
-                @foreach (var p in list)
-                {
+                <div class="widget-content medias">
                     <table class="table table-bordered ">
+                        @{ double allTotal = 0; }
                         <thead>
                             <tr>
                                 <th style="color: royalblue">
-                                    Img
+                                    Đại lý
                                 </th>
                                 <th style="color: royalblue">
                                     Tên sản phẩm
@@ -49,27 +50,33 @@
                                     Giá
                                 </th>
                                 <th style="color: royalblue">
+                                    Tổng tiền
+                                </th>
+                                <th style="color: royalblue">
                                     Control
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <form action="/Cart/ManageCart" method="POST">
                                 <td>
-                                    <img src="@p.Image">
+                                    <span class="text-danger">@p.DL</span>
                                 </td>
+                                <form action="/Cart/ManageCart" method="POST">
                                 <td>
                                     <a href="#">@p.Name</a>
                                 </td>
                                 <td>
-                                      <input name="txtQuantity@(p.Id)" value="@p.Quantity" type="text"/> 
+                                    <input name="txtQuantity@(p.Id)" value="@p.Quantity" type="text" style="width: 30px"/>
                                 </td>
                                 <td>
                                     @p.time
                                 </td>
                                 <td>
                                     @p.Price.ToString("0,0") VND
+                                </td>
+                                <td>
+                                    @p.Total.ToString("0,0") VND
                                 </td>
                                 <td>
                                     <button class="btn btn-sm btn-danger" value="Save.@(p.Id)" type="submit" name="btn">
@@ -79,19 +86,31 @@
                                         <i class="icon-remove"></i>
                                     </button>
                                 </td>
+                                @{ allTotal += @p.Quantity * @p.Price; }
                                 </form>
                             </tr>
                         </tbody>
+                        
                     </table>
-                }
-            </div>
-            <div class="widget-foot">
-                <button type="button" class="btn btn-primary">
-                    Thanh toán</button>
-                <a href="@Url.Action("Index", "Home")" class="btn btn-default">Tiếp tục mua hàng</a>
-                <div class="clearfix">
                 </div>
+                <form action="/Cart/CheckOut" method="POST">
+                <div class="widget-foot">
+                    <div class="col-md-8">
+                        Tổng tiền: &nbsp;
+                        <input style="width: 70px" value="@allTotal.ToString("0,0")" type="hidden" name="txtTotal"/>
+                        <input style="width: 70px" value="@p.DL" type="hidden" name="txtDL"/>
+                        <span class="text-danger">@allTotal.ToString("0,0")</span> VND
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            Thanh toán</button>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-default">Tiếp tục mua hàng</a>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
+}
