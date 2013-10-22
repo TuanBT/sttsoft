@@ -16,6 +16,7 @@ namespace STTSoft.Controllers
         public DateTime time;
         public double Price;
         public double Total;
+        public string DL;
     }
 
     public class CartController : Controller
@@ -27,35 +28,43 @@ namespace STTSoft.Controllers
         {
             int id = 0;
             int quantity = 0;
+            string dl;
             //tạo list chứa danh sách sản phẩm
             List<Prodetail> list = new List<Prodetail>();
             //lưu biến basket với Session["Cart"]; 
             Dictionary<int, int> basket = (Dictionary<int, int>)Session["Cart"];
+            Dictionary<int, string> accDL = (Dictionary<int, string>)Session["AccDl"];
             //nếu basket khác null
             if (basket != null)
             {
                 //duyệt từng cắp các giá trị <key><value> trong basket
                 foreach (KeyValuePair<int, int> pair in basket)
                 {
-                    //gán giá trị
-                    id = pair.Key;
-                    quantity = pair.Value;
+                    //foreach (KeyValuePair<int, string> pair2 in accDL)
+                    {
+                        //gán giá trị
+                        id = pair.Key;
+                        quantity = pair.Value;
+                        dl = accDL[pair.Key];
 
-                    var listCartDetail = (from p in db.Products
-                                          where p.ProId == id
-                                          select new Prodetail()
-                                          {
-                                              Id = p.ProId,
-                                              Image = p.ProImage,
-                                              Name = p.ProName,
-                                              Quantity = quantity,
-                                              time = DateTime.Now,
-                                              Price = (double)p.ProPrice,
-                                              Total = (double)(p.ProPrice * quantity)
-                                          }).SingleOrDefault();
-                    //add vào list
-                    list.Add(listCartDetail);
-
+                        var listCartDetail = (from p in db.Products
+                                              where p.ProId == id
+                                              select new Prodetail()
+                                              {
+                                                  Id = p.ProId,
+                                                  Image = p.ProImage,
+                                                  Name = p.ProName,
+                                                  Quantity = quantity,
+                                                  time = DateTime.Now,
+                                                  DL =dl,
+                                                  Price = (float)p.ProPrice,
+                                                  Total = (float)(p.ProPrice * quantity)
+                                              }).SingleOrDefault();
+                        //add vào list
+                        list.Add(listCartDetail);
+                
+                    }
+                  
                 }
             }
             ViewBag.ListCartDetail = list;
@@ -88,6 +97,46 @@ namespace STTSoft.Controllers
                 return Redirect(Request.UrlReferrer.ToString());
             }
             return RedirectToAction("index", "Home");
+        }
+        [HttpPost]
+        public ActionResult CheckOut(string oid)
+        {
+            var order = new Order();
+            int proId = 0;
+            int quantity = 0;
+            Dictionary<int, int> basket = (Dictionary<int, int>)Session["Cart"];          
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            string a= Request.Params["txtDL"];
+            order.OrdSaler = Request.Params["txtDL"];
+            order.AccName = Session["username"].ToString();
+            order.OrDate = DateTime.Now;
+            order.OrTotal = Convert.ToDecimal(Request.Params["txtTotal"]);
+            db.Orders.InsertOnSubmit(order);
+            db.SubmitChanges();
+            var orid = (from o in db.Orders orderby o.OrId descending select o.OrId).First();
+           
+            if (basket != null)
+            {
+                foreach (KeyValuePair<int, int> pair in basket)
+                {
+                    var orderd = new OrderDetail();
+                    proId = pair.Key;
+                    quantity = pair.Value;
+                    orderd.ProId = proId;
+                    var product = db.Products.Single(p => p.ProId == proId);
+                    orderd.OrdQuantity = quantity;
+                    orderd.OrdId = Convert.ToInt32(orid);
+                    orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
+                    orderd.OrId = orid;
+                    db.OrderDetails.InsertOnSubmit(orderd);
+                    db.SubmitChanges();
+                }
+            }
+            Session["Cart"] = null;
+            return RedirectToAction("Index", "Home");
         }
     }
 }

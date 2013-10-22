@@ -24,6 +24,8 @@ namespace STTSoft.Controllers
             ViewBag.ProDetail = proDetail;
             var comment = (from com in db.Comments where com.ProId == proId select com);
             ViewBag.list = comment.ToList<Comment>();
+            var accountDL = (from accdl in db.Accounts where accdl.AccRole == "D" || accdl.AccRole=="A" select accdl);
+            ViewBag.AccDL = accountDL.ToList<Account>();
             return View("Detail");
         }
         public ActionResult GenreMenu()
@@ -77,30 +79,36 @@ namespace STTSoft.Controllers
         public ActionResult AddToCart()
         {
             Dictionary<int, int> basket = (Dictionary<int, int>)Session["Cart"];
-
+            Dictionary<int, string> dl = (Dictionary<int, string>)Session["AccDl"];
             string proId = Request.Params["proId"];
             var quantity = Request.Params["cartQuantity"];
-
+            var accDl = Request.Params["AccDl"];
             if (quantity != null)
             {
                 if (basket != null)
                 {
-                    if (basket.ContainsKey(Convert.ToInt32(proId)))
+                    if (basket.ContainsKey(Convert.ToInt32(proId)) && dl.ContainsKey(Convert.ToInt32(proId)))
                     {
                         basket[Convert.ToInt32(proId)] = Convert.ToInt32(quantity);
+                        dl[Convert.ToInt32(proId)] = accDl;
                     }
                     else
                     {
                         basket.Add(Convert.ToInt32(proId), Convert.ToInt32(quantity));
+                        dl.Add(Convert.ToInt32(proId), accDl);
                     }
 
                     Session["Cart"] = basket;
+                    Session["AccDl"] = dl;
                 }
                 else
                 {
                     Dictionary<int, int> cart = new Dictionary<int, int>();
                     cart.Add(Convert.ToInt32(proId), Convert.ToInt32(quantity));
                     Session["Cart"] = cart;
+                    Dictionary<int, string> Accdl = new Dictionary<int, string>();
+                    Accdl.Add(Convert.ToInt32(proId), accDl);
+                    Session["AccDl"] = Accdl;
                 }
             }
 
