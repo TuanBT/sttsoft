@@ -1,5 +1,6 @@
 ﻿@if (Session["username"] != null)
 {
     Session.Remove("username");
+    Session.Remove("role");
     Response.Redirect("/Home/Index");
 }
