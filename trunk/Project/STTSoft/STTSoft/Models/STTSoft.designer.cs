@@ -1253,11 +1253,7 @@ namespace STTSoft.Models
 		
 		private string _AccName;
 		
-		private System.Nullable<decimal> _OrTotal;
-		
 		private System.Nullable<System.DateTime> _OrDate;
-		
-		private string _OrdSaler;
 		
 		private EntitySet<OrderDetail> _OrderDetails;
 		
@@ -1271,12 +1267,8 @@ namespace STTSoft.Models
     partial void OnOrIdChanged();
     partial void OnAccNameChanging(string value);
     partial void OnAccNameChanged();
-    partial void OnOrTotalChanging(System.Nullable<decimal> value);
-    partial void OnOrTotalChanged();
     partial void OnOrDateChanging(System.Nullable<System.DateTime> value);
     partial void OnOrDateChanged();
-    partial void OnOrdSalerChanging(string value);
-    partial void OnOrdSalerChanged();
     #endregion
 		
 		public Order()
@@ -1330,26 +1322,6 @@ namespace STTSoft.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrTotal", DbType="Money")]
-		public System.Nullable<decimal> OrTotal
-		{
-			get
-			{
-				return this._OrTotal;
-			}
-			set
-			{
-				if ((this._OrTotal != value))
-				{
-					this.OnOrTotalChanging(value);
-					this.SendPropertyChanging();
-					this._OrTotal = value;
-					this.SendPropertyChanged("OrTotal");
-					this.OnOrTotalChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrDate", DbType="DateTime")]
 		public System.Nullable<System.DateTime> OrDate
 		{
@@ -1366,26 +1338,6 @@ namespace STTSoft.Models
 					this._OrDate = value;
 					this.SendPropertyChanged("OrDate");
 					this.OnOrDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrdSaler", DbType="NVarChar(50)")]
-		public string OrdSaler
-		{
-			get
-			{
-				return this._OrdSaler;
-			}
-			set
-			{
-				if ((this._OrdSaler != value))
-				{
-					this.OnOrdSalerChanging(value);
-					this.SendPropertyChanging();
-					this._OrdSaler = value;
-					this.SendPropertyChanged("OrdSaler");
-					this.OnOrdSalerChanged();
 				}
 			}
 		}
@@ -1484,7 +1436,7 @@ namespace STTSoft.Models
 		
 		private System.Nullable<int> _OrId;
 		
-		private double _OrdTotal;
+		private string _OrdSaler;
 		
 		private EntityRef<Order> _Order;
 		
@@ -1502,8 +1454,8 @@ namespace STTSoft.Models
     partial void OnOrdQuantityChanged();
     partial void OnOrIdChanging(System.Nullable<int> value);
     partial void OnOrIdChanged();
-    partial void OnOrdTotalChanging(double value);
-    partial void OnOrdTotalChanged();
+    partial void OnOrdSalerChanging(string value);
+    partial void OnOrdSalerChanged();
     #endregion
 		
 		public OrderDetail()
@@ -1601,22 +1553,22 @@ namespace STTSoft.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrdTotal", DbType="Float NOT NULL")]
-		public double OrdTotal
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrdSaler", DbType="NVarChar(50)")]
+		public string OrdSaler
 		{
 			get
 			{
-				return this._OrdTotal;
+				return this._OrdSaler;
 			}
 			set
 			{
-				if ((this._OrdTotal != value))
+				if ((this._OrdSaler != value))
 				{
-					this.OnOrdTotalChanging(value);
+					this.OnOrdSalerChanging(value);
 					this.SendPropertyChanging();
-					this._OrdTotal = value;
-					this.SendPropertyChanged("OrdTotal");
-					this.OnOrdTotalChanged();
+					this._OrdSaler = value;
+					this.SendPropertyChanged("OrdSaler");
+					this.OnOrdSalerChanged();
 				}
 			}
 		}
