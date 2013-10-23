@@ -18,5 +18,7 @@ namespace STTSoftService.DTO
         public string AccPhone;
 
         public string AccPass;
+
+        public bool IsOrder;
     }
 }

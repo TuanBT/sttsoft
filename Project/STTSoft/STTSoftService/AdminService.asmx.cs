@@ -19,7 +19,7 @@ namespace STTSoftService
     {
         STTSoftDataContext db = new STTSoftDataContext();
 
-
+        #region Account
         [WebMethod]
         public List<AccountDTO> AccountList()
         {
@@ -33,9 +33,15 @@ namespace STTSoftService
                                 AccPass = acc.AccPass,
                                 AccPhone = acc.AccPhone,
                                 AccRole = acc.AccRole
-
                             }).ToList();
-
+            foreach (var accountDto in listAccount)
+            {
+                var order = db.Orders.FirstOrDefault(o => o.AccName == accountDto.AccName);
+                if(order!=null)
+                {
+                    accountDto.IsOrder = true;
+                }
+            }
             return listAccount;
         }
 
@@ -107,9 +113,9 @@ namespace STTSoftService
             }
             return true;
         }
+        #endregion
 
-
-
+        #region Product
         [WebMethod]
         public List<ProductDTO> ProductList()
         {
@@ -205,9 +211,9 @@ namespace STTSoftService
             }
             return true;
         }
+        #endregion
 
-
-
+        #region Catalog
         [WebMethod]
         public List<CategoryDTO> CatalogList()
         {
@@ -299,5 +305,63 @@ namespace STTSoftService
             }
             return true;
         }
+        #endregion
+
+        #region Bank
+        [WebMethod]
+        public List<BankDTO> BankList()
+        {
+            var listBank =
+               (from ban in db.Banks
+                select new BankDTO()
+                {
+                    AccName = ban.AccName,
+                    BanMoney = ban.BanMoney
+                }
+
+               ).ToList();
+            return listBank;
+        }
+
+        [WebMethod]
+        public bool BankEdit(string accName,double banMoney)
+        {
+            var bank = db.Banks.FirstOrDefault(b => b.AccName == accName);
+            if (bank != null)
+            {
+                bank.BanMoney = banMoney;
+            }
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
+
+        [WebMethod]
+        public bool BankDelete(string accName)
+        {
+            var bank = db.Banks.FirstOrDefault(b => b.AccName == accName);
+            try
+            {
+                if (bank != null)
+                {
+                    db.Banks.DeleteOnSubmit(bank);
+                    db.SubmitChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                return true;
+            }
+            return true;
+        }
+        #endregion
     }
 }
