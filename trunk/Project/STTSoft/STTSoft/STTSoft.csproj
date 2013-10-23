@@ -325,7 +325,6 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\STTSoft.csprojResolveAssemblyReference.cache" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="obj\Debug\STTSoft.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\STTSoft.dll" />
@@ -398,6 +397,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Web.config" />
+    <Content Include="Views\Shared\ErrorBage2.cshtml" />
+    <Content Include="Views\Shared\ErrorPage3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
