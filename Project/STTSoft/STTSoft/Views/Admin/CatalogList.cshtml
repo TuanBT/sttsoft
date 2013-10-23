@@ -4,3 +4,21 @@
 }
 
 <h2>CatalogList</h2>
+
+@model List<STTSoft.STTSoftService.CategoryDTO>
+
+<table border="1">
+    <tr style="color: blue">
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    @foreach(var category in Model)
+    {
+        <tr>
+            <td>@category.CatId</td>
+            <td>@category.CatName</td>
+            <td><a href="/Admin/CatalogEdit?catId=@category.CatId">Edit</a></td>
+            <td><a href="/Admin/CatalogDelete?catId=@category.CatName">Delete</a></td>
+        </tr>
+    }
+</table>

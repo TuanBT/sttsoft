@@ -137,6 +137,173 @@ namespace STTSoft.STTSoftService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductDTO", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ProductDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int ProIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProDetailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProImageField;
+        
+        private double ProPriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ProId {
+            get {
+                return this.ProIdField;
+            }
+            set {
+                if ((this.ProIdField.Equals(value) != true)) {
+                    this.ProIdField = value;
+                    this.RaisePropertyChanged("ProId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string ProName {
+            get {
+                return this.ProNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProNameField, value) != true)) {
+                    this.ProNameField = value;
+                    this.RaisePropertyChanged("ProName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string ProDetail {
+            get {
+                return this.ProDetailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProDetailField, value) != true)) {
+                    this.ProDetailField = value;
+                    this.RaisePropertyChanged("ProDetail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string ProImage {
+            get {
+                return this.ProImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProImageField, value) != true)) {
+                    this.ProImageField = value;
+                    this.RaisePropertyChanged("ProImage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public double ProPrice {
+            get {
+                return this.ProPriceField;
+            }
+            set {
+                if ((this.ProPriceField.Equals(value) != true)) {
+                    this.ProPriceField = value;
+                    this.RaisePropertyChanged("ProPrice");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDTO", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class CategoryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int CatIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CatNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int CatId {
+            get {
+                return this.CatIdField;
+            }
+            set {
+                if ((this.CatIdField.Equals(value) != true)) {
+                    this.CatIdField = value;
+                    this.RaisePropertyChanged("CatId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string CatName {
+            get {
+                return this.CatNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CatNameField, value) != true)) {
+                    this.CatNameField = value;
+                    this.RaisePropertyChanged("CatName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="STTSoftService.AdminServiceSoap")]
     public interface AdminServiceSoap {
@@ -156,6 +323,36 @@ namespace STTSoft.STTSoftService {
         // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AccountDelete", ReplyAction="*")]
         STTSoft.STTSoftService.AccountDeleteResponse AccountDelete(STTSoft.STTSoftService.AccountDeleteRequest request);
+        
+        // CODEGEN: Generating message contract since element name ProductListResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ProductList", ReplyAction="*")]
+        STTSoft.STTSoftService.ProductListResponse ProductList(STTSoft.STTSoftService.ProductListRequest request);
+        
+        // CODEGEN: Generating message contract since element name proName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ProductInsert", ReplyAction="*")]
+        STTSoft.STTSoftService.ProductInsertResponse ProductInsert(STTSoft.STTSoftService.ProductInsertRequest request);
+        
+        // CODEGEN: Generating message contract since element name proName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ProductEdit", ReplyAction="*")]
+        STTSoft.STTSoftService.ProductEditResponse ProductEdit(STTSoft.STTSoftService.ProductEditRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ProductDelete", ReplyAction="*")]
+        bool ProductDelete(int proId);
+        
+        // CODEGEN: Generating message contract since element name CatalogListResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogList", ReplyAction="*")]
+        STTSoft.STTSoftService.CatalogListResponse CatalogList(STTSoft.STTSoftService.CatalogListRequest request);
+        
+        // CODEGEN: Generating message contract since element name catName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogInsert", ReplyAction="*")]
+        STTSoft.STTSoftService.CatalogInsertResponse CatalogInsert(STTSoft.STTSoftService.CatalogInsertRequest request);
+        
+        // CODEGEN: Generating message contract since element name catName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogEdit", ReplyAction="*")]
+        STTSoft.STTSoftService.CatalogEditResponse CatalogEdit(STTSoft.STTSoftService.CatalogEditRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogDelete", ReplyAction="*")]
+        bool CatalogDelete(int catId);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -459,6 +656,432 @@ namespace STTSoft.STTSoftService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ProductListRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ProductList", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.ProductListRequestBody Body;
+        
+        public ProductListRequest() {
+        }
+        
+        public ProductListRequest(STTSoft.STTSoftService.ProductListRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ProductListRequestBody {
+        
+        public ProductListRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ProductListResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ProductListResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.ProductListResponseBody Body;
+        
+        public ProductListResponse() {
+        }
+        
+        public ProductListResponse(STTSoft.STTSoftService.ProductListResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ProductListResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public STTSoft.STTSoftService.ProductDTO[] ProductListResult;
+        
+        public ProductListResponseBody() {
+        }
+        
+        public ProductListResponseBody(STTSoft.STTSoftService.ProductDTO[] ProductListResult) {
+            this.ProductListResult = ProductListResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ProductInsertRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ProductInsert", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.ProductInsertRequestBody Body;
+        
+        public ProductInsertRequest() {
+        }
+        
+        public ProductInsertRequest(STTSoft.STTSoftService.ProductInsertRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ProductInsertRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string proName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string proDetail;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string proImage;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public double proPrice;
+        
+        public ProductInsertRequestBody() {
+        }
+        
+        public ProductInsertRequestBody(string proName, string proDetail, string proImage, double proPrice) {
+            this.proName = proName;
+            this.proDetail = proDetail;
+            this.proImage = proImage;
+            this.proPrice = proPrice;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ProductInsertResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ProductInsertResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.ProductInsertResponseBody Body;
+        
+        public ProductInsertResponse() {
+        }
+        
+        public ProductInsertResponse(STTSoft.STTSoftService.ProductInsertResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ProductInsertResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ProductInsertResult;
+        
+        public ProductInsertResponseBody() {
+        }
+        
+        public ProductInsertResponseBody(bool ProductInsertResult) {
+            this.ProductInsertResult = ProductInsertResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ProductEditRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ProductEdit", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.ProductEditRequestBody Body;
+        
+        public ProductEditRequest() {
+        }
+        
+        public ProductEditRequest(STTSoft.STTSoftService.ProductEditRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ProductEditRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int proId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string proName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string proDetail;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string proImage;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public double proPrice;
+        
+        public ProductEditRequestBody() {
+        }
+        
+        public ProductEditRequestBody(int proId, string proName, string proDetail, string proImage, double proPrice) {
+            this.proId = proId;
+            this.proName = proName;
+            this.proDetail = proDetail;
+            this.proImage = proImage;
+            this.proPrice = proPrice;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ProductEditResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ProductEditResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.ProductEditResponseBody Body;
+        
+        public ProductEditResponse() {
+        }
+        
+        public ProductEditResponse(STTSoft.STTSoftService.ProductEditResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ProductEditResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool ProductEditResult;
+        
+        public ProductEditResponseBody() {
+        }
+        
+        public ProductEditResponseBody(bool ProductEditResult) {
+            this.ProductEditResult = ProductEditResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogListRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogList", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.CatalogListRequestBody Body;
+        
+        public CatalogListRequest() {
+        }
+        
+        public CatalogListRequest(STTSoft.STTSoftService.CatalogListRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CatalogListRequestBody {
+        
+        public CatalogListRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogListResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogListResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.CatalogListResponseBody Body;
+        
+        public CatalogListResponse() {
+        }
+        
+        public CatalogListResponse(STTSoft.STTSoftService.CatalogListResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CatalogListResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public STTSoft.STTSoftService.CategoryDTO[] CatalogListResult;
+        
+        public CatalogListResponseBody() {
+        }
+        
+        public CatalogListResponseBody(STTSoft.STTSoftService.CategoryDTO[] CatalogListResult) {
+            this.CatalogListResult = CatalogListResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogInsertRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogInsert", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.CatalogInsertRequestBody Body;
+        
+        public CatalogInsertRequest() {
+        }
+        
+        public CatalogInsertRequest(STTSoft.STTSoftService.CatalogInsertRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CatalogInsertRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string catName;
+        
+        public CatalogInsertRequestBody() {
+        }
+        
+        public CatalogInsertRequestBody(string catName) {
+            this.catName = catName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogInsertResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogInsertResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.CatalogInsertResponseBody Body;
+        
+        public CatalogInsertResponse() {
+        }
+        
+        public CatalogInsertResponse(STTSoft.STTSoftService.CatalogInsertResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CatalogInsertResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool CatalogInsertResult;
+        
+        public CatalogInsertResponseBody() {
+        }
+        
+        public CatalogInsertResponseBody(bool CatalogInsertResult) {
+            this.CatalogInsertResult = CatalogInsertResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogEditRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogEdit", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.CatalogEditRequestBody Body;
+        
+        public CatalogEditRequest() {
+        }
+        
+        public CatalogEditRequest(STTSoft.STTSoftService.CatalogEditRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CatalogEditRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int catId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string catName;
+        
+        public CatalogEditRequestBody() {
+        }
+        
+        public CatalogEditRequestBody(int catId, string catName) {
+            this.catId = catId;
+            this.catName = catName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CatalogEditResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CatalogEditResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.CatalogEditResponseBody Body;
+        
+        public CatalogEditResponse() {
+        }
+        
+        public CatalogEditResponse(STTSoft.STTSoftService.CatalogEditResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CatalogEditResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool CatalogEditResult;
+        
+        public CatalogEditResponseBody() {
+        }
+        
+        public CatalogEditResponseBody(bool CatalogEditResult) {
+            this.CatalogEditResult = CatalogEditResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface AdminServiceSoapChannel : STTSoft.STTSoftService.AdminServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -544,6 +1167,98 @@ namespace STTSoft.STTSoftService {
             inValue.Body.accName = accName;
             STTSoft.STTSoftService.AccountDeleteResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).AccountDelete(inValue);
             return retVal.Body.AccountDeleteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.ProductListResponse STTSoft.STTSoftService.AdminServiceSoap.ProductList(STTSoft.STTSoftService.ProductListRequest request) {
+            return base.Channel.ProductList(request);
+        }
+        
+        public STTSoft.STTSoftService.ProductDTO[] ProductList() {
+            STTSoft.STTSoftService.ProductListRequest inValue = new STTSoft.STTSoftService.ProductListRequest();
+            inValue.Body = new STTSoft.STTSoftService.ProductListRequestBody();
+            STTSoft.STTSoftService.ProductListResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).ProductList(inValue);
+            return retVal.Body.ProductListResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.ProductInsertResponse STTSoft.STTSoftService.AdminServiceSoap.ProductInsert(STTSoft.STTSoftService.ProductInsertRequest request) {
+            return base.Channel.ProductInsert(request);
+        }
+        
+        public bool ProductInsert(string proName, string proDetail, string proImage, double proPrice) {
+            STTSoft.STTSoftService.ProductInsertRequest inValue = new STTSoft.STTSoftService.ProductInsertRequest();
+            inValue.Body = new STTSoft.STTSoftService.ProductInsertRequestBody();
+            inValue.Body.proName = proName;
+            inValue.Body.proDetail = proDetail;
+            inValue.Body.proImage = proImage;
+            inValue.Body.proPrice = proPrice;
+            STTSoft.STTSoftService.ProductInsertResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).ProductInsert(inValue);
+            return retVal.Body.ProductInsertResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.ProductEditResponse STTSoft.STTSoftService.AdminServiceSoap.ProductEdit(STTSoft.STTSoftService.ProductEditRequest request) {
+            return base.Channel.ProductEdit(request);
+        }
+        
+        public bool ProductEdit(int proId, string proName, string proDetail, string proImage, double proPrice) {
+            STTSoft.STTSoftService.ProductEditRequest inValue = new STTSoft.STTSoftService.ProductEditRequest();
+            inValue.Body = new STTSoft.STTSoftService.ProductEditRequestBody();
+            inValue.Body.proId = proId;
+            inValue.Body.proName = proName;
+            inValue.Body.proDetail = proDetail;
+            inValue.Body.proImage = proImage;
+            inValue.Body.proPrice = proPrice;
+            STTSoft.STTSoftService.ProductEditResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).ProductEdit(inValue);
+            return retVal.Body.ProductEditResult;
+        }
+        
+        public bool ProductDelete(int proId) {
+            return base.Channel.ProductDelete(proId);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.CatalogListResponse STTSoft.STTSoftService.AdminServiceSoap.CatalogList(STTSoft.STTSoftService.CatalogListRequest request) {
+            return base.Channel.CatalogList(request);
+        }
+        
+        public STTSoft.STTSoftService.CategoryDTO[] CatalogList() {
+            STTSoft.STTSoftService.CatalogListRequest inValue = new STTSoft.STTSoftService.CatalogListRequest();
+            inValue.Body = new STTSoft.STTSoftService.CatalogListRequestBody();
+            STTSoft.STTSoftService.CatalogListResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).CatalogList(inValue);
+            return retVal.Body.CatalogListResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.CatalogInsertResponse STTSoft.STTSoftService.AdminServiceSoap.CatalogInsert(STTSoft.STTSoftService.CatalogInsertRequest request) {
+            return base.Channel.CatalogInsert(request);
+        }
+        
+        public bool CatalogInsert(string catName) {
+            STTSoft.STTSoftService.CatalogInsertRequest inValue = new STTSoft.STTSoftService.CatalogInsertRequest();
+            inValue.Body = new STTSoft.STTSoftService.CatalogInsertRequestBody();
+            inValue.Body.catName = catName;
+            STTSoft.STTSoftService.CatalogInsertResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).CatalogInsert(inValue);
+            return retVal.Body.CatalogInsertResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.CatalogEditResponse STTSoft.STTSoftService.AdminServiceSoap.CatalogEdit(STTSoft.STTSoftService.CatalogEditRequest request) {
+            return base.Channel.CatalogEdit(request);
+        }
+        
+        public bool CatalogEdit(int catId, string catName) {
+            STTSoft.STTSoftService.CatalogEditRequest inValue = new STTSoft.STTSoftService.CatalogEditRequest();
+            inValue.Body = new STTSoft.STTSoftService.CatalogEditRequestBody();
+            inValue.Body.catId = catId;
+            inValue.Body.catName = catName;
+            STTSoft.STTSoftService.CatalogEditResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).CatalogEdit(inValue);
+            return retVal.Body.CatalogEditResult;
+        }
+        
+        public bool CatalogDelete(int catId) {
+            return base.Channel.CatalogDelete(catId);
         }
     }
 }

@@ -4,3 +4,28 @@
 }
 
 <h2>ProductList</h2>
+@model List<STTSoft.STTSoftService.ProductDTO>
+
+<table border="1">
+    <tr style="color: blue">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Detail</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach(var product in Model)
+    {
+        <tr>
+            <td>@product.ProId</td>
+            <td>@product.ProName</td>
+            <td>@product.ProDetail</td>
+            <td>@product.ProImage</td>
+            <td>@product.ProPrice</td>
+            <td><a href="/Admin/ProductEdit?proId=@product.ProId">Edit</a></td>
+            <td><a href="/Admin/ProductDelete?proId=@product.ProId">Delete</a></td>
+        </tr>
+    }
+</table>

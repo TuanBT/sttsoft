@@ -78,6 +78,143 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ProductList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProductListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProductListResult" type="tns:ArrayOfProductDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProductDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductDTO" nillable="true" type="tns:ProductDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProDetail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProImage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProPrice" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProductInsert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="proName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proDetail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proImage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="proPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductInsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProductInsertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductEdit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="proId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="proName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proDetail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proImage" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="proPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductEditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProductEditResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="proId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProductDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProductDeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogList">
+        <s:complexType />
+      </s:element>
+      <s:element name="CatalogListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CatalogListResult" type="tns:ArrayOfCategoryDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCategoryDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CategoryDTO" nillable="true" type="tns:CategoryDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CategoryDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CatId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CatName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CatalogInsert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="catName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogInsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CatalogInsertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogEdit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="catId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="catName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogEditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CatalogEditResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="catId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CatalogDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CatalogDeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="AccountListSoapIn">
@@ -104,6 +241,54 @@
   <wsdl:message name="AccountDeleteSoapOut">
     <wsdl:part name="parameters" element="tns:AccountDeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="ProductListSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductList" />
+  </wsdl:message>
+  <wsdl:message name="ProductListSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductInsertSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductInsert" />
+  </wsdl:message>
+  <wsdl:message name="ProductInsertSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductEditSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductEdit" />
+  </wsdl:message>
+  <wsdl:message name="ProductEditSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProductDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:ProductDelete" />
+  </wsdl:message>
+  <wsdl:message name="ProductDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:ProductDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogListSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogList" />
+  </wsdl:message>
+  <wsdl:message name="CatalogListSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogInsertSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogInsert" />
+  </wsdl:message>
+  <wsdl:message name="CatalogInsertSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogEditSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogEdit" />
+  </wsdl:message>
+  <wsdl:message name="CatalogEditSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="CatalogDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:CatalogDelete" />
+  </wsdl:message>
+  <wsdl:message name="CatalogDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:CatalogDeleteResponse" />
+  </wsdl:message>
   <wsdl:portType name="AdminServiceSoap">
     <wsdl:operation name="AccountList">
       <wsdl:input message="tns:AccountListSoapIn" />
@@ -120,6 +305,38 @@
     <wsdl:operation name="AccountDelete">
       <wsdl:input message="tns:AccountDeleteSoapIn" />
       <wsdl:output message="tns:AccountDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductList">
+      <wsdl:input message="tns:ProductListSoapIn" />
+      <wsdl:output message="tns:ProductListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductInsert">
+      <wsdl:input message="tns:ProductInsertSoapIn" />
+      <wsdl:output message="tns:ProductInsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductEdit">
+      <wsdl:input message="tns:ProductEditSoapIn" />
+      <wsdl:output message="tns:ProductEditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductDelete">
+      <wsdl:input message="tns:ProductDeleteSoapIn" />
+      <wsdl:output message="tns:ProductDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogList">
+      <wsdl:input message="tns:CatalogListSoapIn" />
+      <wsdl:output message="tns:CatalogListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogInsert">
+      <wsdl:input message="tns:CatalogInsertSoapIn" />
+      <wsdl:output message="tns:CatalogInsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEdit">
+      <wsdl:input message="tns:CatalogEditSoapIn" />
+      <wsdl:output message="tns:CatalogEditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CatalogDelete">
+      <wsdl:input message="tns:CatalogDeleteSoapIn" />
+      <wsdl:output message="tns:CatalogDeleteSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AdminServiceSoap" type="tns:AdminServiceSoap">
@@ -160,6 +377,78 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ProductList">
+      <soap:operation soapAction="http://tempuri.org/ProductList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductInsert">
+      <soap:operation soapAction="http://tempuri.org/ProductInsert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductEdit">
+      <soap:operation soapAction="http://tempuri.org/ProductEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductDelete">
+      <soap:operation soapAction="http://tempuri.org/ProductDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogList">
+      <soap:operation soapAction="http://tempuri.org/CatalogList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogInsert">
+      <soap:operation soapAction="http://tempuri.org/CatalogInsert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEdit">
+      <soap:operation soapAction="http://tempuri.org/CatalogEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogDelete">
+      <soap:operation soapAction="http://tempuri.org/CatalogDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AdminServiceSoap12" type="tns:AdminServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -192,6 +481,78 @@
     </wsdl:operation>
     <wsdl:operation name="AccountDelete">
       <soap12:operation soapAction="http://tempuri.org/AccountDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductList">
+      <soap12:operation soapAction="http://tempuri.org/ProductList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductInsert">
+      <soap12:operation soapAction="http://tempuri.org/ProductInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductEdit">
+      <soap12:operation soapAction="http://tempuri.org/ProductEdit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductDelete">
+      <soap12:operation soapAction="http://tempuri.org/ProductDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogList">
+      <soap12:operation soapAction="http://tempuri.org/CatalogList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogInsert">
+      <soap12:operation soapAction="http://tempuri.org/CatalogInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogEdit">
+      <soap12:operation soapAction="http://tempuri.org/CatalogEdit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CatalogDelete">
+      <soap12:operation soapAction="http://tempuri.org/CatalogDelete" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
