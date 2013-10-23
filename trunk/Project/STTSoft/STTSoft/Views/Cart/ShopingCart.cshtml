@@ -62,7 +62,8 @@
                             <tr>
                                 <td>
                                     <span class="text-danger">@p.DL</span>
-                                     <input style="width: 70px" value="@p.DL" type="hidden" name="txtDL@(p.Id)"/>
+                                    <input style="width: 70px" value="@p.DL" type="hidden" name="txtDL@(p.Id)"/>
+                                    @{Session["DL"] = @p.DL;}
                                 </td>
                                 <td>
                                     <a href="#">@p.Name</a>
