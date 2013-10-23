@@ -4,3 +4,35 @@
 }
 
 <h2>OrderList</h2>
+
+@model List<STTSoft.STTSoftService.OrderDTO>
+
+<table border="1">
+    <tr style="color: blue">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Quanlity</th>
+        <th>Saler</th>
+        <th>Product name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.OrdId</td>
+            <td>@order.AccName</td>
+            <td>@order.OrDate</td>
+            <td>@order.OrdQuantity</td>
+            <td>@order.OrdSaler</td>
+            <td>@order.ProName</td>
+            <td>@order.ProImage</td>
+            <td>@order.ProPrice</td>
+            <td><a href="/Admin/OrderEdit?ordId=@order.OrdId&accName=@order.AccName">Edit</a></td>
+            <td><a href="/Admin/OrderDelete?ordId=@order.OrdId">Delete</a></td>
+        </tr>
+    }
+</table>
