@@ -178,7 +178,9 @@ namespace STTSoft.Controllers
         #region Order
         public ActionResult OrderList()
         {
-            return View();
+            var accName = Request.QueryString["accName"];
+            var listOrder = service.OrderList(accName).ToList();
+            return View(listOrder);
         }
 
         public ActionResult OrderDetail()
@@ -188,11 +190,42 @@ namespace STTSoft.Controllers
 
         public ActionResult OrderEdit()
         {
-            return View();
+            var ordId = Request.QueryString["ordId"];
+            var accName = Request.QueryString["accName"];
+            var orOrdPro = (from or in db.Orders
+                            join ord in db.OrderDetails on or.OrId equals ord.OrId
+                            join pro in db.Products on ord.ProId equals pro.ProId
+                            where or.AccName == accName
+                            where ord.OrdId == Convert.ToInt32(ordId) 
+                            select new OrOrdProModel()
+                                       {
+                                          Order = or,
+                                          OrderDetail = ord,
+                                          Product = pro
+                                       }
+                           ).Single();
+            return View(orOrdPro);
+        }
+
+        [HttpPost]
+          public ActionResult OrderEdit(string txtOrdId,string txtQantity)
+        {
+            if (service.OrderEdit(Convert.ToInt32(txtOrdId),Convert.ToInt32(txtQantity)))
+            {
+                return RedirectToAction("AccountList", "Admin");
+            }
+            //if false
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult OrderDelete()
         {
+            var ordId = Request.QueryString["ordId"];
+            if (service.OrderDelete(Convert.ToInt32(ordId)))
+            {
+                return RedirectToAction("AccountList", "Admin");
+            }
+            //If false
             return View();
         }
 
