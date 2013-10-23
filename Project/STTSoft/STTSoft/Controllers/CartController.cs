@@ -56,15 +56,15 @@ namespace STTSoft.Controllers
                                                   Name = p.ProName,
                                                   Quantity = quantity,
                                                   time = DateTime.Now,
-                                                  DL =dl,
+                                                  DL = dl,
                                                   Price = (float)p.ProPrice,
                                                   Total = (float)(p.ProPrice * quantity)
                                               }).SingleOrDefault();
                         //add vào list
                         list.Add(listCartDetail);
-                
+
                     }
-                  
+
                 }
             }
             ViewBag.ListCartDetail = list;
@@ -101,42 +101,99 @@ namespace STTSoft.Controllers
         [HttpPost]
         public ActionResult CheckOut(string oid)
         {
-            var order = new Order();
-            int proId = 0;
-            int quantity = 0;
-            Dictionary<int, int> basket = (Dictionary<int, int>)Session["Cart"];          
-            if (Session["username"] == null)
+            string btn = Request.Params["btn"];
+            string namebtn = btn.Split('.')[0];
+            string valuebtn = btn.Split('.')[1];
+            int id = Convert.ToInt32(valuebtn);
+            string txtQuantity = Request.Params["txtQuantity" + id];
+            int newQuantity = Convert.ToInt32(txtQuantity);
+            string txtDl = Request.Params["txtDL" + id];
+            if (namebtn.Equals("delete"))
             {
-                return RedirectToAction("Login", "Account");
-            }
-            string a= Request.Params["txtDL"];
-            order.OrdSaler = Request.Params["txtDL"];
-            order.AccName = Session["username"].ToString();
-            order.OrDate = DateTime.Now;
-            order.OrTotal = Convert.ToDecimal(Request.Params["txtTotal"]);
-            db.Orders.InsertOnSubmit(order);
-            db.SubmitChanges();
-            var orid = (from o in db.Orders orderby o.OrId descending select o.OrId).First();
-           
-            if (basket != null)
-            {
-                foreach (KeyValuePair<int, int> pair in basket)
+                Dictionary<int, int> basket1 = (Dictionary<int, int>)Session["Cart"];
+                if (basket1.ContainsKey(id))
                 {
-                    var orderd = new OrderDetail();
-                    proId = pair.Key;
-                    quantity = pair.Value;
-                    orderd.ProId = proId;
-                    var product = db.Products.Single(p => p.ProId == proId);
-                    orderd.OrdQuantity = quantity;
-                    orderd.OrdId = Convert.ToInt32(orid);
-                    orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
-                    orderd.OrId = orid;
-                    db.OrderDetails.InsertOnSubmit(orderd);
-                    db.SubmitChanges();
+                    basket1.Remove(id);
                 }
+                return Redirect(Request.UrlReferrer.ToString());
             }
-            Session["Cart"] = null;
-            return RedirectToAction("Index", "Home");
+            else if (namebtn.Equals("Save"))
+            {
+                Dictionary<int, int> basket1 = (Dictionary<int, int>)Session["Cart"];
+                if (basket1.ContainsKey(id))
+                {
+                    basket1[id] = newQuantity;
+                }
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+            else
+            {
+                var order = new Order();
+                int proId = 0;
+                int quantity = 0;
+                string seller;
+                Dictionary<int, int> basket = (Dictionary<int, int>)Session["Cart"];
+                Dictionary<int, string> accDL = (Dictionary<int, string>)Session["AccDl"];
+                if (Session["username"] == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                //order.OrdSaler = Request.Params["txtDL"];
+                order.AccName = Session["username"].ToString();
+                order.OrDate = DateTime.Now;
+                order.OrTotal = Convert.ToDecimal(Request.Params["txtTotal"]);
+                db.Orders.InsertOnSubmit(order);
+                db.SubmitChanges();
+                var orid = (from o in db.Orders orderby o.OrId descending select o.OrId).First();
+
+                if (basket != null)
+                {
+                    foreach (KeyValuePair<int, int> pair in basket)
+                    {
+                        if ((string)Session["role"] != "D")
+                        {
+                            var orderd = new OrderDetail();
+                            proId = pair.Key;
+                            quantity = pair.Value;
+                            seller = accDL[pair.Key];
+                            orderd.OrdSaler = seller;
+                            orderd.ProId = proId;
+                            var product = db.Products.Single(p => p.ProId == proId);
+                            orderd.OrdQuantity = quantity;
+                            orderd.OrdId = Convert.ToInt32(orid);
+                            orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
+                            orderd.OrId = orid;
+                            var account = (from acc in db.Accounts 
+                                           from discount in db.Discounts
+                                           where acc.AccName == seller && acc.AccLevel == discount.AccLevel
+                                           select discount.DisPercent).Single();
+                           var bank = db.Banks.Single(acc => acc.AccName == seller);
+                           bank.BanMoney = bank.BanMoney + Convert.ToDouble(product.ProPrice * quantity) + (Convert.ToDouble(product.ProPrice * quantity) * (Convert.ToDouble(account)) / 100);
+                            db.OrderDetails.InsertOnSubmit(orderd);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
+                            var orderd = new OrderDetail();
+                            var accName = (string)Session["username"];
+                            proId = pair.Key;
+                            quantity = pair.Value;
+                            orderd.ProId = proId;
+                            var product = db.Products.Single(p => p.ProId == proId);
+                            orderd.OrdQuantity = quantity;
+                            orderd.OrdId = Convert.ToInt32(orid);
+                            orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
+                            orderd.OrId = orid;
+                            var account = db.Banks.Single(acc => acc.AccName == accName);
+                            account.BanMoney = account.BanMoney - (double)Session["AllTotal"];
+                            db.OrderDetails.InsertOnSubmit(orderd);
+                            db.SubmitChanges();
+                        }
+                    }
+                }
+                Session["Cart"] = null;
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
