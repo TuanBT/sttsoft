@@ -62,7 +62,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DTO\AccountDTO.cs" />
+    <Compile Include="DTO\BankDTO.cs" />
     <Compile Include="DTO\CategoryDTO.cs" />
+    <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="STTSoft.designer.cs">

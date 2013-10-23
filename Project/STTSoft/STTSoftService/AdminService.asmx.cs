@@ -37,7 +37,7 @@ namespace STTSoftService
             foreach (var accountDto in listAccount)
             {
                 var order = db.Orders.FirstOrDefault(o => o.AccName == accountDto.AccName);
-                if(order!=null)
+                if (order != null)
                 {
                     accountDto.IsOrder = true;
                 }
@@ -324,7 +324,7 @@ namespace STTSoftService
         }
 
         [WebMethod]
-        public bool BankEdit(string accName,double banMoney)
+        public bool BankEdit(string accName, double banMoney)
         {
             var bank = db.Banks.FirstOrDefault(b => b.AccName == accName);
             if (bank != null)
@@ -352,6 +352,78 @@ namespace STTSoftService
                 if (bank != null)
                 {
                     db.Banks.DeleteOnSubmit(bank);
+                    db.SubmitChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                return true;
+            }
+            return true;
+        }
+        #endregion
+
+        #region order
+        [WebMethod]
+        public List<OrderDTO> OrderList(string accName)
+        {
+            var listOrder =
+               (from or in db.Orders
+                join ord in db.OrderDetails on or.OrId equals ord.OrId
+                join pro in db.Products on ord.ProId equals pro.ProId
+                where or.AccName == accName
+                select new OrderDTO()
+                {
+                    AccName = or.AccName,
+                    OrDate = or.OrDate,
+                    OrId = or.OrId,
+                    OrdId = ord.OrdId,
+                    OrdQuantity = ord.OrdQuantity,
+                    OrdSaler = ord.OrdSaler,
+                    ProId = pro.ProId,
+                    ProImage = pro.ProImage,
+                    ProName = pro.ProName,
+                    ProPrice = pro.ProPrice
+                }
+
+               ).ToList();
+            return listOrder;
+        }
+        [WebMethod]
+        public bool OrderEdit(int ordId, int ordQuantity)
+        {
+            var order = db.OrderDetails.FirstOrDefault(o => o.OrdId == ordId);
+            if (order != null)
+            {
+                order.OrdQuantity = ordQuantity;
+            }
+            try
+            {
+                db.SubmitChanges();
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
+        [WebMethod]
+        public bool OrderDelete(int ordId)
+        {
+            var orderDetail = db.OrderDetails.FirstOrDefault(o => o.OrdId == ordId);
+            try
+            {
+                if (orderDetail != null)
+                {
+                    var bank = db.Banks.FirstOrDefault(b => b.AccName == orderDetail.OrdSaler);
+                    var proPrice = db.Products.FirstOrDefault(p => p.ProId == orderDetail.ProId).ProPrice;
+                    if (bank != null)
+                    {
+                        bank.BanMoney = proPrice * orderDetail.OrdQuantity;
+                    }
+                    db.OrderDetails.DeleteOnSubmit(orderDetail);
                     db.SubmitChanges();
                 }
             }
