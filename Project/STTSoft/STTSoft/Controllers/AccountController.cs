@@ -23,22 +23,44 @@ namespace STTSoft.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
+
+            int id = 0;
+            int quantity = 0;
+            string dl;
             // Select the input usename in textbox at login form
             username = Request.Params["txtUsername"];
             // Select the input password in textbox at login form
             password = Request.Params["txtPassword"];
             try
             {
+
                 var account = (from acc in db.Accounts
                                where acc.AccName.Equals(username) && acc.AccPass.Equals(password)
                                select acc).SingleOrDefault();
-
+                //var accName = (from ac in db.Accounts where ac.AccRole == "D" select ac.AccName).Single();
                 //Kiểm tra username và password trong database
                 if (account != null)
                 {
-                    Session["username"] = username;
-                    Session["role"] = account.AccRole;
-                    return RedirectToAction("Index", "Home");
+                    Dictionary<int, int> basket = (Dictionary<int, int>)Session["Cart"];
+                    Dictionary<int, string> accDL = (Dictionary<int, string>)Session["AccDl"];
+                    
+                    if (basket != null)
+                    {
+                        //duyệt từng cắp các giá trị <key><value> trong basket
+                        foreach (KeyValuePair<int, int> pair in basket)
+                        {
+                            //gán giá trị
+                            dl = accDL[pair.Key];
+                            var accRole = (from ac in db.Accounts where ac.AccName == dl select ac.AccRole).Single();
+                            if (account.AccRole==accRole )
+                            {
+                                return View("ErrorPage3");
+                            }
+                            Session["username"] = username;
+                            Session["role"] = account.AccRole;
+                        }
+                    }
+                    return RedirectToAction("ShopingCart", "Cart");
                 }
                 else
                 {
@@ -50,7 +72,7 @@ namespace STTSoft.Controllers
             {
                 throw argumentNullException;
             }
-        }
+    }
 
         //Đăng xuất
         [HttpGet]
