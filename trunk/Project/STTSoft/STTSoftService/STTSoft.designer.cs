@@ -1253,8 +1253,6 @@ namespace STTSoftService
 		
 		private string _AccName;
 		
-		private System.Nullable<decimal> _OrTotal;
-		
 		private System.Nullable<System.DateTime> _OrDate;
 		
 		private EntitySet<OrderDetail> _OrderDetails;
@@ -1269,8 +1267,6 @@ namespace STTSoftService
     partial void OnOrIdChanged();
     partial void OnAccNameChanging(string value);
     partial void OnAccNameChanged();
-    partial void OnOrTotalChanging(System.Nullable<decimal> value);
-    partial void OnOrTotalChanged();
     partial void OnOrDateChanging(System.Nullable<System.DateTime> value);
     partial void OnOrDateChanged();
     #endregion
@@ -1322,26 +1318,6 @@ namespace STTSoftService
 					this._AccName = value;
 					this.SendPropertyChanged("AccName");
 					this.OnAccNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrTotal", DbType="Money")]
-		public System.Nullable<decimal> OrTotal
-		{
-			get
-			{
-				return this._OrTotal;
-			}
-			set
-			{
-				if ((this._OrTotal != value))
-				{
-					this.OnOrTotalChanging(value);
-					this.SendPropertyChanging();
-					this._OrTotal = value;
-					this.SendPropertyChanged("OrTotal");
-					this.OnOrTotalChanged();
 				}
 			}
 		}
@@ -1460,6 +1436,8 @@ namespace STTSoftService
 		
 		private System.Nullable<int> _OrId;
 		
+		private string _OrdSaler;
+		
 		private EntityRef<Order> _Order;
 		
 		private EntityRef<Product> _Product;
@@ -1476,6 +1454,8 @@ namespace STTSoftService
     partial void OnOrdQuantityChanged();
     partial void OnOrIdChanging(System.Nullable<int> value);
     partial void OnOrIdChanged();
+    partial void OnOrdSalerChanging(string value);
+    partial void OnOrdSalerChanged();
     #endregion
 		
 		public OrderDetail()
@@ -1569,6 +1549,26 @@ namespace STTSoftService
 					this._OrId = value;
 					this.SendPropertyChanged("OrId");
 					this.OnOrIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrdSaler", DbType="NVarChar(50)")]
+		public string OrdSaler
+		{
+			get
+			{
+				return this._OrdSaler;
+			}
+			set
+			{
+				if ((this._OrdSaler != value))
+				{
+					this.OnOrdSalerChanging(value);
+					this.SendPropertyChanging();
+					this._OrdSaler = value;
+					this.SendPropertyChanged("OrdSaler");
+					this.OnOrdSalerChanged();
 				}
 			}
 		}

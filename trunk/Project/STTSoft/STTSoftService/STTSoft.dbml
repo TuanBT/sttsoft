@@ -60,7 +60,6 @@
     <Type Name="Order">
       <Column Name="OrId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="AccName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="OrTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="OrDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="Order_OrderDetail" Member="OrderDetails" ThisKey="OrId" OtherKey="OrId" Type="OrderDetail" />
       <Association Name="Account_Order" Member="Account" ThisKey="AccName" OtherKey="AccName" Type="Account" IsForeignKey="true" />
@@ -72,6 +71,7 @@
       <Column Name="ProId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="OrdQuantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="OrId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrdSaler" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Order_OrderDetail" Member="Order" ThisKey="OrId" OtherKey="OrId" Type="Order" IsForeignKey="true" />
       <Association Name="Product_OrderDetail" Member="Product" ThisKey="ProId" OtherKey="ProId" Type="Product" IsForeignKey="true" />
     </Type>

@@ -7,12 +7,15 @@ namespace STTSoftService.DTO
 {
     public class OrderDTO
     {
-        private int OrId;
-
-        private string AccName;
-
-        private System.Nullable<decimal> OrTotal;
-
-        private System.Nullable<System.DateTime> OrDate;
+        public int OrId;
+        public string AccName;
+        public System.Nullable<System.DateTime> OrDate;
+        public int OrdId;
+        public System.Nullable<int> ProId;
+        public System.Nullable<int> OrdQuantity;
+        public string OrdSaler;
+        public string ProName;
+        public string ProImage;
+        public double ProPrice;
     }
 }
