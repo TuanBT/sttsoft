@@ -36,6 +36,8 @@ namespace STTSoft.STTSoftService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AccPassField;
         
+        private bool IsOrderField;
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AccNameField;
         
@@ -114,7 +116,20 @@ namespace STTSoft.STTSoftService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public bool IsOrder {
+            get {
+                return this.IsOrderField;
+            }
+            set {
+                if ((this.IsOrderField.Equals(value) != true)) {
+                    this.IsOrderField = value;
+                    this.RaisePropertyChanged("IsOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
         public string AccName {
             get {
                 return this.AccNameField;
@@ -304,6 +319,249 @@ namespace STTSoft.STTSoftService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BankDTO", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class BankDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccNameField;
+        
+        private System.Nullable<double> BanMoneyField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string AccName {
+            get {
+                return this.AccNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccNameField, value) != true)) {
+                    this.AccNameField = value;
+                    this.RaisePropertyChanged("AccName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<double> BanMoney {
+            get {
+                return this.BanMoneyField;
+            }
+            set {
+                if ((this.BanMoneyField.Equals(value) != true)) {
+                    this.BanMoneyField = value;
+                    this.RaisePropertyChanged("BanMoney");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDTO", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class OrderDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int OrIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccNameField;
+        
+        private System.Nullable<System.DateTime> OrDateField;
+        
+        private int OrdIdField;
+        
+        private System.Nullable<int> ProIdField;
+        
+        private System.Nullable<int> OrdQuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrdSalerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProImageField;
+        
+        private double ProPriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int OrId {
+            get {
+                return this.OrIdField;
+            }
+            set {
+                if ((this.OrIdField.Equals(value) != true)) {
+                    this.OrIdField = value;
+                    this.RaisePropertyChanged("OrId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string AccName {
+            get {
+                return this.AccNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccNameField, value) != true)) {
+                    this.AccNameField = value;
+                    this.RaisePropertyChanged("AccName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.Nullable<System.DateTime> OrDate {
+            get {
+                return this.OrDateField;
+            }
+            set {
+                if ((this.OrDateField.Equals(value) != true)) {
+                    this.OrDateField = value;
+                    this.RaisePropertyChanged("OrDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int OrdId {
+            get {
+                return this.OrdIdField;
+            }
+            set {
+                if ((this.OrdIdField.Equals(value) != true)) {
+                    this.OrdIdField = value;
+                    this.RaisePropertyChanged("OrdId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<int> ProId {
+            get {
+                return this.ProIdField;
+            }
+            set {
+                if ((this.ProIdField.Equals(value) != true)) {
+                    this.ProIdField = value;
+                    this.RaisePropertyChanged("ProId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<int> OrdQuantity {
+            get {
+                return this.OrdQuantityField;
+            }
+            set {
+                if ((this.OrdQuantityField.Equals(value) != true)) {
+                    this.OrdQuantityField = value;
+                    this.RaisePropertyChanged("OrdQuantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string OrdSaler {
+            get {
+                return this.OrdSalerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrdSalerField, value) != true)) {
+                    this.OrdSalerField = value;
+                    this.RaisePropertyChanged("OrdSaler");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string ProName {
+            get {
+                return this.ProNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProNameField, value) != true)) {
+                    this.ProNameField = value;
+                    this.RaisePropertyChanged("ProName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string ProImage {
+            get {
+                return this.ProImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProImageField, value) != true)) {
+                    this.ProImageField = value;
+                    this.RaisePropertyChanged("ProImage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public double ProPrice {
+            get {
+                return this.ProPriceField;
+            }
+            set {
+                if ((this.ProPriceField.Equals(value) != true)) {
+                    this.ProPriceField = value;
+                    this.RaisePropertyChanged("ProPrice");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="STTSoftService.AdminServiceSoap")]
     public interface AdminServiceSoap {
@@ -353,6 +611,28 @@ namespace STTSoft.STTSoftService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CatalogDelete", ReplyAction="*")]
         bool CatalogDelete(int catId);
+        
+        // CODEGEN: Generating message contract since element name BankListResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BankList", ReplyAction="*")]
+        STTSoft.STTSoftService.BankListResponse BankList(STTSoft.STTSoftService.BankListRequest request);
+        
+        // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BankEdit", ReplyAction="*")]
+        STTSoft.STTSoftService.BankEditResponse BankEdit(STTSoft.STTSoftService.BankEditRequest request);
+        
+        // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BankDelete", ReplyAction="*")]
+        STTSoft.STTSoftService.BankDeleteResponse BankDelete(STTSoft.STTSoftService.BankDeleteRequest request);
+        
+        // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/OrderList", ReplyAction="*")]
+        STTSoft.STTSoftService.OrderListResponse OrderList(STTSoft.STTSoftService.OrderListRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/OrderEdit", ReplyAction="*")]
+        bool OrderEdit(int ordId, int ordQuantity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/OrderDelete", ReplyAction="*")]
+        bool OrderDelete(int ordId);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1082,6 +1362,275 @@ namespace STTSoft.STTSoftService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BankListRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BankList", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.BankListRequestBody Body;
+        
+        public BankListRequest() {
+        }
+        
+        public BankListRequest(STTSoft.STTSoftService.BankListRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class BankListRequestBody {
+        
+        public BankListRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BankListResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BankListResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.BankListResponseBody Body;
+        
+        public BankListResponse() {
+        }
+        
+        public BankListResponse(STTSoft.STTSoftService.BankListResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BankListResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public STTSoft.STTSoftService.BankDTO[] BankListResult;
+        
+        public BankListResponseBody() {
+        }
+        
+        public BankListResponseBody(STTSoft.STTSoftService.BankDTO[] BankListResult) {
+            this.BankListResult = BankListResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BankEditRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BankEdit", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.BankEditRequestBody Body;
+        
+        public BankEditRequest() {
+        }
+        
+        public BankEditRequest(STTSoft.STTSoftService.BankEditRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BankEditRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string accName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public double banMoney;
+        
+        public BankEditRequestBody() {
+        }
+        
+        public BankEditRequestBody(string accName, double banMoney) {
+            this.accName = accName;
+            this.banMoney = banMoney;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BankEditResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BankEditResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.BankEditResponseBody Body;
+        
+        public BankEditResponse() {
+        }
+        
+        public BankEditResponse(STTSoft.STTSoftService.BankEditResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BankEditResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool BankEditResult;
+        
+        public BankEditResponseBody() {
+        }
+        
+        public BankEditResponseBody(bool BankEditResult) {
+            this.BankEditResult = BankEditResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BankDeleteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BankDelete", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.BankDeleteRequestBody Body;
+        
+        public BankDeleteRequest() {
+        }
+        
+        public BankDeleteRequest(STTSoft.STTSoftService.BankDeleteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BankDeleteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string accName;
+        
+        public BankDeleteRequestBody() {
+        }
+        
+        public BankDeleteRequestBody(string accName) {
+            this.accName = accName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BankDeleteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BankDeleteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.BankDeleteResponseBody Body;
+        
+        public BankDeleteResponse() {
+        }
+        
+        public BankDeleteResponse(STTSoft.STTSoftService.BankDeleteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BankDeleteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool BankDeleteResult;
+        
+        public BankDeleteResponseBody() {
+        }
+        
+        public BankDeleteResponseBody(bool BankDeleteResult) {
+            this.BankDeleteResult = BankDeleteResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class OrderListRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="OrderList", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.OrderListRequestBody Body;
+        
+        public OrderListRequest() {
+        }
+        
+        public OrderListRequest(STTSoft.STTSoftService.OrderListRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class OrderListRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string accName;
+        
+        public OrderListRequestBody() {
+        }
+        
+        public OrderListRequestBody(string accName) {
+            this.accName = accName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class OrderListResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="OrderListResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.OrderListResponseBody Body;
+        
+        public OrderListResponse() {
+        }
+        
+        public OrderListResponse(STTSoft.STTSoftService.OrderListResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class OrderListResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public STTSoft.STTSoftService.OrderDTO[] OrderListResult;
+        
+        public OrderListResponseBody() {
+        }
+        
+        public OrderListResponseBody(STTSoft.STTSoftService.OrderDTO[] OrderListResult) {
+            this.OrderListResult = OrderListResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface AdminServiceSoapChannel : STTSoft.STTSoftService.AdminServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -1259,6 +1808,66 @@ namespace STTSoft.STTSoftService {
         
         public bool CatalogDelete(int catId) {
             return base.Channel.CatalogDelete(catId);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.BankListResponse STTSoft.STTSoftService.AdminServiceSoap.BankList(STTSoft.STTSoftService.BankListRequest request) {
+            return base.Channel.BankList(request);
+        }
+        
+        public STTSoft.STTSoftService.BankDTO[] BankList() {
+            STTSoft.STTSoftService.BankListRequest inValue = new STTSoft.STTSoftService.BankListRequest();
+            inValue.Body = new STTSoft.STTSoftService.BankListRequestBody();
+            STTSoft.STTSoftService.BankListResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).BankList(inValue);
+            return retVal.Body.BankListResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.BankEditResponse STTSoft.STTSoftService.AdminServiceSoap.BankEdit(STTSoft.STTSoftService.BankEditRequest request) {
+            return base.Channel.BankEdit(request);
+        }
+        
+        public bool BankEdit(string accName, double banMoney) {
+            STTSoft.STTSoftService.BankEditRequest inValue = new STTSoft.STTSoftService.BankEditRequest();
+            inValue.Body = new STTSoft.STTSoftService.BankEditRequestBody();
+            inValue.Body.accName = accName;
+            inValue.Body.banMoney = banMoney;
+            STTSoft.STTSoftService.BankEditResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).BankEdit(inValue);
+            return retVal.Body.BankEditResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.BankDeleteResponse STTSoft.STTSoftService.AdminServiceSoap.BankDelete(STTSoft.STTSoftService.BankDeleteRequest request) {
+            return base.Channel.BankDelete(request);
+        }
+        
+        public bool BankDelete(string accName) {
+            STTSoft.STTSoftService.BankDeleteRequest inValue = new STTSoft.STTSoftService.BankDeleteRequest();
+            inValue.Body = new STTSoft.STTSoftService.BankDeleteRequestBody();
+            inValue.Body.accName = accName;
+            STTSoft.STTSoftService.BankDeleteResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).BankDelete(inValue);
+            return retVal.Body.BankDeleteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.OrderListResponse STTSoft.STTSoftService.AdminServiceSoap.OrderList(STTSoft.STTSoftService.OrderListRequest request) {
+            return base.Channel.OrderList(request);
+        }
+        
+        public STTSoft.STTSoftService.OrderDTO[] OrderList(string accName) {
+            STTSoft.STTSoftService.OrderListRequest inValue = new STTSoft.STTSoftService.OrderListRequest();
+            inValue.Body = new STTSoft.STTSoftService.OrderListRequestBody();
+            inValue.Body.accName = accName;
+            STTSoft.STTSoftService.OrderListResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).OrderList(inValue);
+            return retVal.Body.OrderListResult;
+        }
+        
+        public bool OrderEdit(int ordId, int ordQuantity) {
+            return base.Channel.OrderEdit(ordId, ordQuantity);
+        }
+        
+        public bool OrderDelete(int ordId) {
+            return base.Channel.OrderDelete(ordId);
         }
     }
 }
