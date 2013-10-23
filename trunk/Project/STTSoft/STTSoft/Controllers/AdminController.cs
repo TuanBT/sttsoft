@@ -13,11 +13,13 @@ namespace STTSoft.Controllers
         // GET: /Admin/
 
         STTSoftDataContext db = new STTSoftDataContext();
+        AdminServiceSoapClient service = new AdminServiceSoapClient();
 
         #region Product
         public ActionResult ProductList()
         {
-            return View();
+            var listProduct = service.ProductList().ToList();
+            return View(listProduct);
         }
 
         public ActionResult ProductInsert()
@@ -25,13 +27,42 @@ namespace STTSoft.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult ProductInsert(string txtName, string txtDetail, string txtImage, double txtPrice)
+        {
+            if (service.ProductInsert(txtName, txtDetail, txtImage, Convert.ToDouble(txtPrice)))
+            {
+                return RedirectToAction("ProductList", "Admin");
+            }
+            return View();
+        }
+
         public ActionResult ProductEdit()
         {
-            return View();
+            int proId = Convert.ToInt32(Request.QueryString["proId"]);
+            var product = db.Products.FirstOrDefault(p => p.ProId == proId);
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult ProductEdit(int txtproId, string txtName, string txtDetail, string txtImage, double txtPrice)
+        {
+            if (service.ProductEdit(txtproId, txtName, txtDetail, txtImage, Convert.ToDouble(txtPrice)))
+            {
+                return RedirectToAction("ProductList", "Admin");
+            }
+            //if false
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult ProductDelete()
         {
+            int proId = Convert.ToInt32(Request.QueryString["proId"]);
+            if (service.ProductDelete(proId))
+            {
+                return RedirectToAction("ProductList", "Admin");
+            }
+            //If false
             return View();
         }
 
@@ -40,11 +71,22 @@ namespace STTSoft.Controllers
         #region Catalog
         public ActionResult CatalogList()
         {
-            return View();
+            var listCategory = service.CatalogList().ToList();
+            return View(listCategory);
         }
 
         public ActionResult CatalogInsert()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CatalogInsert(string catName)
+        {
+            if (service.CatalogInsert(catName))
+            {
+                return RedirectToAction("CatalogList", "Admin");
+            }
             return View();
         }
 
@@ -53,8 +95,24 @@ namespace STTSoft.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult CatalogEdit(string catId,string catName)
+        {
+            if (service.CatalogEdit(Convert.ToInt32(catId), catName)) ;
+            {
+                return RedirectToAction("CatalogList", "Admin");
+            }
+            return View();
+        }
+
         public ActionResult CatalogDelete()
         {
+            int catId = Convert.ToInt32(Request.QueryString["catId"]);
+            if (service.CatalogDelete(catId))
+            {
+                return RedirectToAction("CatalogList", "Admin");
+            }
+            //If false
             return View();
         }
 
@@ -62,7 +120,7 @@ namespace STTSoft.Controllers
 
         #region Account
 
-        AdminServiceSoapClient service = new AdminServiceSoapClient();
+       
 
         public ActionResult AccountList()
         {

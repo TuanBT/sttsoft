@@ -4,3 +4,14 @@
 }
 
 <h2>ProductEdit</h2>
+
+@model STTSoft.Models.Product
+
+<form action="/Admin/ProductEdit" method="POST">
+    ID :  <input name="txtproId" value="@Model.ProId"/>   
+    Name: <input name="txtName" value="@Model.ProName"/>
+    Detail: <input name="txtDetail" value="@Model.ProDetail"/>
+    Image: <input name="txtImage" value="@Model.ProImage"/>
+    Price: <input name="txtPrice" value="@Model.ProPrice"/>
+    <button type="submit">Submit</button>
+</form>  
