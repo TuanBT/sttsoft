@@ -106,6 +106,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrOrdProModel.cs" />
     <Compile Include="Models\STTSoft.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -399,6 +400,27 @@
     <Content Include="Web.config" />
     <Content Include="Views\Shared\ErrorBage2.cshtml" />
     <Content Include="Views\Shared\ErrorPage3.cshtml" />
+    <Content Include="Service References\STTSoftService\STTSoft.STTSoftService.BankDTO1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\STTSoftService\STTSoft.STTSoftService.CategoryDTO2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\STTSoftService\STTSoft.STTSoftService.ProductDTO2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Views\Admin\BankDelete.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Admin\BankEdit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Admin\BankList.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Service References\STTSoftService\STTSoft.STTSoftService.OrderDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
