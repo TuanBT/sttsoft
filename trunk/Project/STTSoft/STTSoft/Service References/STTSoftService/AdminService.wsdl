@@ -24,6 +24,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="AccMail" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="AccPhone" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="AccPass" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOrder" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="AccName" type="s:string" />
         </s:sequence>
       </s:complexType>
@@ -215,6 +216,118 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="BankList">
+        <s:complexType />
+      </s:element>
+      <s:element name="BankListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BankListResult" type="tns:ArrayOfBankDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBankDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BankDTO" nillable="true" type="tns:BankDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BankDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BanMoney" nillable="true" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BankEdit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="banMoney" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BankEditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BankEditResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BankDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BankDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BankDeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderListResult" type="tns:ArrayOfOrderDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOrderDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderDTO" nillable="true" type="tns:OrderDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="OrId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrdId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrdQuantity" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrdSaler" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProImage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProPrice" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="OrderEdit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ordId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ordQuantity" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderEditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OrderEditResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ordId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OrderDeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="AccountListSoapIn">
@@ -289,6 +402,42 @@
   <wsdl:message name="CatalogDeleteSoapOut">
     <wsdl:part name="parameters" element="tns:CatalogDeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="BankListSoapIn">
+    <wsdl:part name="parameters" element="tns:BankList" />
+  </wsdl:message>
+  <wsdl:message name="BankListSoapOut">
+    <wsdl:part name="parameters" element="tns:BankListResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankEditSoapIn">
+    <wsdl:part name="parameters" element="tns:BankEdit" />
+  </wsdl:message>
+  <wsdl:message name="BankEditSoapOut">
+    <wsdl:part name="parameters" element="tns:BankEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="BankDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:BankDelete" />
+  </wsdl:message>
+  <wsdl:message name="BankDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:BankDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderListSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderList" />
+  </wsdl:message>
+  <wsdl:message name="OrderListSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderEditSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderEdit" />
+  </wsdl:message>
+  <wsdl:message name="OrderEditSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderEditResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderDelete" />
+  </wsdl:message>
+  <wsdl:message name="OrderDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderDeleteResponse" />
+  </wsdl:message>
   <wsdl:portType name="AdminServiceSoap">
     <wsdl:operation name="AccountList">
       <wsdl:input message="tns:AccountListSoapIn" />
@@ -337,6 +486,30 @@
     <wsdl:operation name="CatalogDelete">
       <wsdl:input message="tns:CatalogDeleteSoapIn" />
       <wsdl:output message="tns:CatalogDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BankList">
+      <wsdl:input message="tns:BankListSoapIn" />
+      <wsdl:output message="tns:BankListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BankEdit">
+      <wsdl:input message="tns:BankEditSoapIn" />
+      <wsdl:output message="tns:BankEditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BankDelete">
+      <wsdl:input message="tns:BankDeleteSoapIn" />
+      <wsdl:output message="tns:BankDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderList">
+      <wsdl:input message="tns:OrderListSoapIn" />
+      <wsdl:output message="tns:OrderListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderEdit">
+      <wsdl:input message="tns:OrderEditSoapIn" />
+      <wsdl:output message="tns:OrderEditSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderDelete">
+      <wsdl:input message="tns:OrderDeleteSoapIn" />
+      <wsdl:output message="tns:OrderDeleteSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AdminServiceSoap" type="tns:AdminServiceSoap">
@@ -449,6 +622,60 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="BankList">
+      <soap:operation soapAction="http://tempuri.org/BankList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BankEdit">
+      <soap:operation soapAction="http://tempuri.org/BankEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BankDelete">
+      <soap:operation soapAction="http://tempuri.org/BankDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderList">
+      <soap:operation soapAction="http://tempuri.org/OrderList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderEdit">
+      <soap:operation soapAction="http://tempuri.org/OrderEdit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDelete">
+      <soap:operation soapAction="http://tempuri.org/OrderDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AdminServiceSoap12" type="tns:AdminServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -553,6 +780,60 @@
     </wsdl:operation>
     <wsdl:operation name="CatalogDelete">
       <soap12:operation soapAction="http://tempuri.org/CatalogDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BankList">
+      <soap12:operation soapAction="http://tempuri.org/BankList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BankEdit">
+      <soap12:operation soapAction="http://tempuri.org/BankEdit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BankDelete">
+      <soap12:operation soapAction="http://tempuri.org/BankDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderList">
+      <soap12:operation soapAction="http://tempuri.org/OrderList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderEdit">
+      <soap12:operation soapAction="http://tempuri.org/OrderEdit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDelete">
+      <soap12:operation soapAction="http://tempuri.org/OrderDelete" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
