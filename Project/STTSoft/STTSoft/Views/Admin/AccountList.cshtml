@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model List<STTSoft.STTSoftService.AccountDTO>
-
 <h2>AccountList</h2>
 
 <table border="1">
@@ -15,8 +14,9 @@
         <th>Phone</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Order manager</th>
     </tr>
-    @foreach(var account in Model)
+    @foreach (var account in Model)
     {
         <tr>
             <td>@account.AccName</td>
@@ -26,6 +26,12 @@
             <td>@account.AccPhone</td>
             <td><a href="/Admin/AccountEdit?accName=@account.AccName">Edit</a></td>
             <td><a href="/Admin/AccountDelete?accName=@account.AccName">Delete</a></td>
+            <td>
+                @if (account.IsOrder)
+                {
+                    <a href="/Admin/OrderList?accName=@account.AccName">Order manager</a>
+                }
+            </td>
         </tr>
     }
 </table>
