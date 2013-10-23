@@ -197,5 +197,46 @@ namespace STTSoft.Controllers
         }
 
         #endregion
+
+        #region OrderDetail
+
+        #endregion
+
+        #region Bank
+        public ActionResult BankList()
+        {
+            var listBank = service.BankList().ToList();
+            return View(listBank);
+        }
+
+        public ActionResult BankEdit()
+        {
+            var accName = Request.QueryString["accName"];
+            var bank = db.Banks.FirstOrDefault(b => b.AccName == accName);
+            return View(bank);
+        }
+
+        [HttpPost]
+        public ActionResult BankEdit(string txtAccName,string txtBankMoney)
+        {
+            if (service.BankEdit(txtAccName, Convert.ToDouble(txtBankMoney)))
+            {
+                return RedirectToAction("BankList", "Admin");
+            }
+            //if false
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult BankDelete()
+        {
+            var accName = Request.QueryString["accName"];
+            if (service.BankDelete(accName))
+            {
+                return RedirectToAction("BankList", "Admin");
+            }
+            //If false
+            return View();
+        }
+        #endregion
     }
 }
