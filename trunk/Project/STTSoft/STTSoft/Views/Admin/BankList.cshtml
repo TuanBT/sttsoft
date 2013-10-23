@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "BankList";
+}
+
+<h2>BankList</h2>
+
+@model List<STTSoft.STTSoftService.BankDTO>
+
+<table border="1">
+    <tr style="color: blue">
+        <th>Name</th>
+        <th>Money</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach(var bank in Model)
+    {
+        <tr>
+            <td>@bank.AccName</td>
+            <td>@bank.BanMoney</td>
+            <td><a href="/Admin/BankEdit?accName=@bank.AccName">Edit</a></td>
+            <td><a href="/Admin/BankDelete?accName=@bank.AccName">Delete</a></td>
+        </tr>
+    }
+</table>
