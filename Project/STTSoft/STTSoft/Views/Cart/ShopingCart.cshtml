@@ -15,54 +15,55 @@
 <!-- Page heading ends -->
 @using STTSoft.Controllers
 @{List<Prodetail> list = ViewBag.ListCartDetail;}
-@foreach (var p in list)
-{
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget wred">
-                <div class="widget-head">
-                    <div class="pull-left">
-                        Cart</div>
-                    <div class="widget-icons pull-right">
-                        <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
-                    </div>
-                    <div class="clearfix">
-                    </div>
+<form action="/Cart/CheckOut" method="POST">
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget wred">
+            <div class="widget-head">
+                <div class="pull-left">
+                    Cart</div>
+                <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
                 </div>
-                <div class="widget-content medias">
-                    <table class="table table-bordered ">
-                        @{ double allTotal = 0; }
-                        <thead>
-                            <tr>
-                                <th style="color: royalblue">
-                                    Đại lý
-                                </th>
-                                <th style="color: royalblue">
-                                    Tên sản phẩm
-                                </th>
-                                <th style="color: royalblue">
-                                    Số lượng
-                                </th>
-                                <th style="color: royalblue">
-                                    Date
-                                </th>
-                                <th style="color: royalblue">
-                                    Giá
-                                </th>
-                                <th style="color: royalblue">
-                                    Tổng tiền
-                                </th>
-                                <th style="color: royalblue">
-                                    Control
-                                </th>
-                            </tr>
-                        </thead>
+                <div class="clearfix">
+                </div>
+            </div>
+            <div class="widget-content medias">
+                <table class="table table-bordered ">
+                    @{ double allTotal = 0; }
+                    <thead>
+                        <tr>
+                            <th style="color: royalblue">
+                                Đại lý
+                            </th>
+                            <th style="color: royalblue">
+                                Tên sản phẩm
+                            </th>
+                            <th style="color: royalblue">
+                                Số lượng
+                            </th>
+                            <th style="color: royalblue">
+                                Date
+                            </th>
+                            <th style="color: royalblue">
+                                Giá
+                            </th>
+                            <th style="color: royalblue">
+                                Tổng tiền
+                            </th>
+                            <th style="color: royalblue">
+                                Control
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var p in list)
+                    {
                         <tbody>
                             <tr>
                                 <td>
                                     <span class="text-danger">@p.DL</span>
+                                     <input style="width: 70px" value="@p.DL" type="hidden" name="txtDL@(p.Id)"/>
                                 </td>
-                                <form action="/Cart/ManageCart" method="POST">
                                 <td>
                                     <a href="#">@p.Name</a>
                                 </td>
@@ -87,30 +88,28 @@
                                     </button>
                                 </td>
                                 @{ allTotal += @p.Quantity * @p.Price; }
-                                </form>
+                                @{Session["AllTotal"] = allTotal;}
                             </tr>
                         </tbody>
-                        
-                    </table>
+                    }
+                </table>
+            </div>
+            <div class="widget-foot">
+                <div class="col-md-8">
+                    Tổng tiền: &nbsp;
+                    <input style="width: 70px" value="@allTotal.ToString("0,0")" type="hidden" name="txtTotal"/>
+                   
+                    <span class="text-danger">@allTotal.ToString("0,0")</span> VND
                 </div>
-                <form action="/Cart/CheckOut" method="POST">
-                <div class="widget-foot">
-                    <div class="col-md-8">
-                        Tổng tiền: &nbsp;
-                        <input style="width: 70px" value="@allTotal.ToString("0,0")" type="hidden" name="txtTotal"/>
-                        <input style="width: 70px" value="@p.DL" type="hidden" name="txtDL"/>
-                        <span class="text-danger">@allTotal.ToString("0,0")</span> VND
-                    </div>
-                    <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            Thanh toán</button>
-                        <a href="@Url.Action("Index", "Home")" class="btn btn-default">Tiếp tục mua hàng</a>
-                    </div>
-                    <div class="clearfix">
-                    </div>
+                <div class="col-md-4">
+                    <button type="submit" name="btn" class="btn btn-primary" value="Alltotal.@(allTotal)">
+                        Thanh toán</button>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-default">Tiếp tục mua hàng</a>
                 </div>
-                </form>
+                <div class="clearfix">
+                </div>
             </div>
         </div>
     </div>
-}
+</div>
+</form>
