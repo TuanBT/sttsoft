@@ -1,0 +1,91 @@
+﻿@model STTSoft.Models.Account
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget wred">
+            <div class="widget-head">
+                <div class="pull-left">Profile</div>
+                <div class="widget-icons pull-right">
+                    <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+                    <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="widget-content">
+                <div class="padd">
+
+                    <!-- Profile form -->
+
+                    <div class="form profile">
+                        <!-- Edit profile form (not working)-->
+                        <form action="/Account/Account" method="POST" class="form-horizontal">
+                            <!-- Name -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" for="name1">Name</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" id="name1" name="username" value="@Model.AccName" readonly="readonly">
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" for="email1">Email</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" id="email1" name="email" value="@Model.AccMail"> 
+                                </div>
+                            </div>
+                            <!-- Telephone -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" for="telephone">Telephone</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" id="telephone" name="phone" value="@Model.AccPhone">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" for="telephone">Role</label>
+                                <div class="col-lg-6">
+                                    <h6>@Model.AccRole</h6>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" for="telephone">Level</label>
+                                <div class="col-lg-6">
+                                    <h6>@Model.AccLevel</h6>
+                                </div>
+                            </div>
+                              <div class="form-group">
+                                <label class="control-label col-lg-3" for="telephone">Bank</label>
+                                <div class="col-lg-6">
+                                    <h6>@Model.Bank.BanMoney<span style="color: red">  VND</span></h6>
+                                </div>
+                            </div>
+                           @* <!-- Password -->
+                            <div class="form-group">
+                                <label class="control-label col-lg-3" for="password2">Password</label>
+                                <div class="col-lg-6">
+                                    <input type="password" class="form-control" id="password2">
+                                </div>
+                            </div>*@
+                            <!-- Checkbox -->
+                            <div class="form-group">
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="form-group">
+                                <!-- Buttons -->
+                                <div class="col-lg-6 col-lg-offset-1">
+                                    <button type="submit" class="btn btn-success" name="Edit" value="Save">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
