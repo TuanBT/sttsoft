@@ -135,7 +135,7 @@ namespace STTSoftService
         }
 
         [WebMethod]
-        public bool ProductInsert(string proName, string proDetail, string proImage, double proPrice)
+        public bool ProductInsert(string proName, string proDetail, string proImage, double proPrice, int catId)
         {
             var maxId = Convert.ToInt32(db.Products.OrderByDescending(p => p.ProId).FirstOrDefault().ProId);
             var product = new Product()
@@ -144,7 +144,8 @@ namespace STTSoftService
                 ProName = proName,
                 ProDetail = proDetail,
                 ProImage = proImage,
-                ProPrice = proPrice
+                ProPrice = proPrice,
+                CatId = catId
             };
 
             try
