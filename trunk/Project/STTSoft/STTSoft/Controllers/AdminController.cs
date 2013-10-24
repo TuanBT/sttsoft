@@ -92,13 +92,15 @@ namespace STTSoft.Controllers
 
         public ActionResult CatalogEdit()
         {
-            return View();
+            var catId = Request.QueryString["catId"];
+            var catalogList = db.Categories.FirstOrDefault(c => c.CatId == Convert.ToInt32(catId));
+            return View(catalogList);
         }
 
         [HttpPost]
-        public ActionResult CatalogEdit(string catId,string catName)
+        public ActionResult CatalogEdit(string txtCatId, string txtCatName)
         {
-            if (service.CatalogEdit(Convert.ToInt32(catId), catName)) ;
+            if (service.CatalogEdit(Convert.ToInt32(txtCatId), txtCatName))
             {
                 return RedirectToAction("CatalogList", "Admin");
             }
