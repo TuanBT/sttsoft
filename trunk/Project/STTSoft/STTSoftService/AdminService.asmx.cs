@@ -465,5 +465,27 @@ namespace STTSoftService
             return listOrder;
         }
         #endregion
+
+        #region comment
+        [WebMethod]
+        public bool CommentDelete(int comId=0)
+        {
+            var comment = db.Comments.FirstOrDefault(c => c.ComId == comId);
+            try
+            {
+                if (comment != null)
+                {
+                    db.Comments.DeleteOnSubmit(comment);
+                    db.SubmitChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                return true;
+            }
+            return true;
+        }
+        #endregion
     }
 }
