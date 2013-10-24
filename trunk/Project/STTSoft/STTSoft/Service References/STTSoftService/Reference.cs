@@ -637,6 +637,9 @@ namespace STTSoft.STTSoftService {
         // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/OrderDaiLyList", ReplyAction="*")]
         STTSoft.STTSoftService.OrderDaiLyListResponse OrderDaiLyList(STTSoft.STTSoftService.OrderDaiLyListRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CommentDelete", ReplyAction="*")]
+        bool CommentDelete(int comId);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1953,6 +1956,10 @@ namespace STTSoft.STTSoftService {
             inValue.Body.accName = accName;
             STTSoft.STTSoftService.OrderDaiLyListResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).OrderDaiLyList(inValue);
             return retVal.Body.OrderDaiLyListResult;
+        }
+        
+        public bool CommentDelete(int comId) {
+            return base.Channel.CommentDelete(comId);
         }
     }
 }
