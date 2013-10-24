@@ -106,7 +106,6 @@ namespace STTSoft.Controllers
             string username = Request.Params["username"];
             string password = Request.Params["password"];
             string role = Request.Params["optionsDl"];
-            string name = Request.Params["name"];
             string email = Request.Params["sendEmail"];
             string phone = Request.Params["phone"];
             string action = Request.Params["Create"];
@@ -123,16 +122,31 @@ namespace STTSoft.Controllers
                 else
                 {
                     ViewBag.Status = string.Empty;
+
+
+
                     var account = new Account
                     {
+
                         AccName = username,
                         AccPass = password,
                         AccRole = role,
                         AccMail = email,
                         AccPhone = phone
+
+                    };
+
+                    var accBank = new Bank
+                    {
+                        AccName = username,
+                        BanMoney = Convert.ToDouble(0)
                     };
                     try
                     {
+                        if (role.Equals("D"))
+                        {
+                            db.Banks.InsertOnSubmit(accBank);
+                        }
                         db.Accounts.InsertOnSubmit(account);
                         db.SubmitChanges();
                     }
@@ -144,6 +158,39 @@ namespace STTSoft.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Account()
+        {
+            if (Session["username"] != null)
+            {
+                string username = Session["username"].ToString();
+                var accountDetail = db.Accounts.Single(ac => ac.AccName == username);
+                return View(accountDetail);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Account(string username)
+        {
+            username = Request.Params["username"];
+            var account = db.Accounts.Single(ac => ac.AccName == username);
+            string email = Request.Params["email"];
+            string phone = Request.Params["phone"];
+            string action = Request.Params["Edit"];
+            if ("Save".Equals(action))
+            {
+                account.AccMail = email;
+                account.AccPhone = phone;
+                db.SubmitChanges();
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+            return View();
+        }
+
 
         public ActionResult ForgetPass()
         {

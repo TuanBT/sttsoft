@@ -209,6 +209,15 @@
     <Content Include="Content\img\prettyPhoto\light_square\btnNext.png" />
     <Content Include="Content\img\prettyPhoto\light_square\btnPrevious.png" />
     <Content Include="Content\img\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Content\img\productImage\Angry.jpg" />
+    <Content Include="Content\img\productImage\battlefield-4.jpg" />
+    <Content Include="Content\img\productImage\CallOfDuty.jpg" />
+    <Content Include="Content\img\productImage\CS1.6.jpg" />
+    <Content Include="Content\img\productImage\Excel.png" />
+    <Content Include="Content\img\productImage\Foxit.jpg" />
+    <Content Include="Content\img\productImage\microsoft.jpg" />
+    <Content Include="Content\img\productImage\note.jpg" />
+    <Content Include="Content\img\productImage\PDF.jpg" />
     <Content Include="Content\img\star.gif" />
     <Content Include="Content\img\user-big.jpg" />
     <Content Include="Content\img\user.jpg" />
@@ -219,6 +228,7 @@
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\excanvas.min.js" />
     <Content Include="Content\js\filter.js" />
+    <Content Include="Content\js\FormValidation.js" />
     <Content Include="Content\js\fullcalendar.min.js" />
     <Content Include="Content\js\jquery-ui-1.10.2.custom.min.js" />
     <Content Include="Content\js\jquery.cleditor.min.js" />
@@ -421,6 +431,8 @@
     <Content Include="Service References\STTSoftService\STTSoft.STTSoftService.OrderDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Account\Account.cshtml" />
+    <Content Include="Views\Home\IndexSearch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

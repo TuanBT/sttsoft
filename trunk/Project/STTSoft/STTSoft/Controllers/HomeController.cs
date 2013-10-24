@@ -64,9 +64,11 @@ namespace STTSoft.Controllers
         {
             string proId = Request.Params["proId"];
             string content = Request.Params["txtComment"];
+            string username = (string)Session["username"];
             var comment = new Comment();
             comment.ProId = Convert.ToInt32(proId);
             comment.ComContent = content;
+            comment.AccName = username;
             db.Comments.InsertOnSubmit(comment);
             db.SubmitChanges();
             return Redirect(Request.UrlReferrer.ToString());
@@ -141,6 +143,29 @@ namespace STTSoft.Controllers
             return PartialView();
         }
 
+        [HttpPost]
+        public ActionResult Search()
+        {
+            string txtName = Request.Params["search"];
+            string txtPriceFrom = Request.Params["pricefrom"];
+            string txtPriceTo = Request.Params["priceto"];
+            if (txtPriceFrom.Equals(""))
+            {
+                txtPriceFrom = (-int.MaxValue).ToString();
+            }
+            if (txtPriceTo.Equals(""))
+            {
+                txtPriceTo = (int.MaxValue).ToString();
+            }
+            var result = (from p in db.Products where p.ProPrice >= Convert.ToInt32(txtPriceFrom) && p.ProPrice <= Convert.ToInt32(txtPriceTo) && p.ProName.Contains(txtName) select p);
+            ViewBag.listSearch = result.ToList<Product>();
+            return View("IndexSearch");
+        }
+
+        public ActionResult IndexSearch()
+        {
+            return View();
+        }
 
     }
 }
