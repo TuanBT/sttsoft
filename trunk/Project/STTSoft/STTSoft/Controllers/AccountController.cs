@@ -56,11 +56,12 @@ namespace STTSoft.Controllers
                             {
                                 return View("ErrorPage3");
                             }
-                            Session["username"] = username;
-                            Session["role"] = account.AccRole;
+                            return RedirectToAction("ShopingCart", "Cart");
                         }
                     }
-                    return RedirectToAction("ShopingCart", "Cart");
+                    Session["username"] = username;
+                    Session["role"] = account.AccRole;
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
