@@ -328,6 +328,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="OrderDaiLyList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderDaiLyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderDaiLyListResult" type="tns:ArrayOfOrderDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="AccountListSoapIn">
@@ -438,6 +452,12 @@
   <wsdl:message name="OrderDeleteSoapOut">
     <wsdl:part name="parameters" element="tns:OrderDeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="OrderDaiLyListSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderDaiLyList" />
+  </wsdl:message>
+  <wsdl:message name="OrderDaiLyListSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderDaiLyListResponse" />
+  </wsdl:message>
   <wsdl:portType name="AdminServiceSoap">
     <wsdl:operation name="AccountList">
       <wsdl:input message="tns:AccountListSoapIn" />
@@ -510,6 +530,10 @@
     <wsdl:operation name="OrderDelete">
       <wsdl:input message="tns:OrderDeleteSoapIn" />
       <wsdl:output message="tns:OrderDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderDaiLyList">
+      <wsdl:input message="tns:OrderDaiLyListSoapIn" />
+      <wsdl:output message="tns:OrderDaiLyListSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AdminServiceSoap" type="tns:AdminServiceSoap">
@@ -676,6 +700,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="OrderDaiLyList">
+      <soap:operation soapAction="http://tempuri.org/OrderDaiLyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AdminServiceSoap12" type="tns:AdminServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -834,6 +867,15 @@
     </wsdl:operation>
     <wsdl:operation name="OrderDelete">
       <soap12:operation soapAction="http://tempuri.org/OrderDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDaiLyList">
+      <soap12:operation soapAction="http://tempuri.org/OrderDaiLyList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
