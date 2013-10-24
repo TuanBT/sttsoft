@@ -1,30 +1,32 @@
-﻿@{
+﻿@model List<STTSoft.STTSoftService.OrderDTO>
+@{
     ViewBag.Title = "OrderDaiLyList";
 }
 
-<h2>OrderDaiLyList</h2>
 
-@model List<STTSoft.STTSoftService.OrderDTO>
-<div class="widget-content medias">
-    <table class="table table-bordered ">
-        <thead>
-            <tr>
-                <th style="color: royalblue">Id</th>
-                <th style="color: royalblue">Name</th>
-                <th style="color: royalblue">Date</th>
-                <th style="color: royalblue">Quanlity</th>
-                <th style="color: royalblue">Saler</th>
-                <th style="color: royalblue">Product name</th>
-                <th style="color: royalblue">Image</th>
-                <th style="color: royalblue">Price</th>
-                <th style="color: royalblue">Edit</th>
-                <th style="color: royalblue">Delete</th>
-            </tr>
-        </thead>
-        @if(Model!=null)
-        {
-            foreach (var order in Model)
+
+
+@if ((string)Session["role"] == "A")
+{
+    <h2>OrderDaiLyList</h2>
+    <div class="widget-content medias">
+        <table class="table table-bordered ">
+            <thead>
+                <tr>
+                    <th style="color: royalblue">Id</th>
+                    <th style="color: royalblue">Name</th>
+                    <th style="color: royalblue">Date</th>
+                    <th style="color: royalblue">Quanlity</th>
+                    <th style="color: royalblue">Saler</th>
+                    <th style="color: royalblue">Product name</th>
+                    <th style="color: royalblue">Image</th>
+                    <th style="color: royalblue">Price</th>
+                </tr>
+            </thead>
+            @if (Model != null)
             {
+                foreach (var order in Model)
+                {
                 <tbody>
                     <tr>
                         <td>@order.OrdId</td>
@@ -35,11 +37,16 @@
                         <td>@order.ProName</td>
                         <td>@order.ProImage</td>
                         <td>@order.ProPrice.ToString("0,0") VND</td>
-                        <td><a href="/Admin/OrderEdit?ordId=@order.OrdId&accName=@order.AccName" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
-                        <td><a href="/Admin/OrderDelete?ordId=@order.OrdId" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
                     </tr>
                 </tbody>
+                }
             }
-        }
-    </table>
-</div>
+        </table>
+    </div>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}

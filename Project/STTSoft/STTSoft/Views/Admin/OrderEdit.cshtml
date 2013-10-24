@@ -1,71 +1,80 @@
-﻿@{
+﻿@model STTSoft.Models.OrOrdProModel
+@{
     ViewBag.Title = "OrderEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if ((string)Session["role"] == "A")
+{
+    <h2>OrderEdit</h2>
 
-<h2>OrderEdit</h2>
-
-@model STTSoft.Models.OrOrdProModel
+    
            
-<form action="/Admin/OrderEdit" method="POST">     
-       <table class="table-hover">
-        <tr>
-            <td>Name
-            </td>
-            <td>
-                @Model.Order.AccName
-            </td>
-        </tr>
-        <tr>
-            <td>Date
-            </td>
-            <td>
-                @Model.Order.OrDate
-            </td>
-        </tr>
-        <tr>
-            <td>Product
-            </td>
-            <td>
-                @Model.Product.ProName
-            </td>
-        </tr>
-        <tr>
-            <td>Saler
-            </td>
-            <td>
-                @Model.OrderDetail.OrdSaler
-            </td>
-        </tr>
-        <tr>
-            <td>Image
-            </td>
-            <td>
-                @Model.Product.ProImage
-            </td>
-        </tr>
-        <tr>
-            <td>Price
-            </td>
-            <td>
-                @Model.Product.ProPrice.ToString("0,0") VND
-            </td>
-        </tr>
-         <tr>
-            <td>Quantity
-            </td>
-            <td>
-                <input name="txtQantity" value="@Model.OrderDetail.OrdQuantity"/>
-                <input type="hidden" name="txtOrdId" value="@Model.OrderDetail.OrdId"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit" class="btn btn-primary">
-                    Submit</button></td>
+    <form action="/Admin/OrderEdit" method="POST">
+        <table class="table-hover">
+            <tr>
+                <td>Name
+                </td>
+                <td>
+                    @Model.Order.AccName
+                </td>
+            </tr>
+            <tr>
+                <td>Date
+                </td>
+                <td>
+                    @Model.Order.OrDate
+                </td>
+            </tr>
+            <tr>
+                <td>Product
+                </td>
+                <td>
+                    @Model.Product.ProName
+                </td>
+            </tr>
+            <tr>
+                <td>Saler
+                </td>
+                <td>
+                    @Model.OrderDetail.OrdSaler
+                </td>
+            </tr>
+            <tr>
+                <td>Image
+                </td>
+                <td>
+                    @Model.Product.ProImage
+                </td>
+            </tr>
+            <tr>
+                <td>Price
+                </td>
+                <td>
+                    @Model.Product.ProPrice.ToString("0,0") VND
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity
+                </td>
+                <td>
+                    <input name="txtQantity" id="numberProduct"  value="@Model.OrderDetail.OrdQuantity"/>
+                     <span id="numberProductError" class="red"></span>
+                    <input type="hidden" name="txtOrdId" value="@Model.OrderDetail.OrdId"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary" id="CreateNum">
+                        Submit</button></td>
 
-        </tr>
-    </table>
-</form>  
-
+            </tr>
+        </table>
+    </form>  
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}
 

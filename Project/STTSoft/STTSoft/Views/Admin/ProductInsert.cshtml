@@ -2,45 +2,53 @@
     ViewBag.Title = "ProductInsert";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if ((string)Session["role"] == "A")
+{
+    <h2>ProductInsert</h2>
+     
+    <form onsubmit="return validateNumber()" action="/Admin/ProductInsert" method="POST">
+        <table class="table-hover">
+            <tr>
+                <td>Name
+                </td>
+                <td>
+                    <input name="txtName" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>Detail
+                </td>
+                <td>
+                    <input name="txtDetail" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>Image
+                </td>
+                <td>
+                    <input name="txtImage" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td>Price
+                </td>
+                <td>
+                    <input name="txtPrice" id="numberProduct" value="" />
+                     <span id="numberProductError" class="red"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary" id="CreateNum">
+                        Submit</button></td>
 
-<h2>ProductInsert</h2>
-
-<form action="/Admin/ProductInsert" method="POST">
-    <table class="table-hover">
-        <tr>
-            <td>Name
-            </td>
-            <td>
-                <input name="txtName" value="" />
-            </td>
-        </tr>
-        <tr>
-            <td>Detail
-            </td>
-            <td>
-                <input name="txtDetail" value="" />
-            </td>
-        </tr>
-        <tr>
-            <td>Image
-            </td>
-            <td>
-                <input name="txtImage" value="" />
-            </td>
-        </tr>
-        <tr>
-            <td>Price
-            </td>
-            <td>
-                <input name="txtPrice" value="" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit" class="btn btn-primary">
-                    Submit</button></td>
-
-        </tr>
-    </table>
-</form>
-
+            </tr>
+        </table>
+    </form>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}
