@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using STTSoft.Models;
+using STTSoft.STTSoftService;
+
 namespace STTSoft.Controllers
 {
     public class HomeController : Controller
