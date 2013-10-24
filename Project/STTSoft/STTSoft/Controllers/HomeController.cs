@@ -176,5 +176,17 @@ namespace STTSoft.Controllers
             return View();
         }
 
+        public ActionResult DeleteComment()
+        {
+            AdminServiceSoapClient service = new AdminServiceSoapClient();
+            var comId = Convert.ToInt32(Request.QueryString["comId"]);
+            var proId = Convert.ToInt32(Request.QueryString["proId"]);
+            if(service.CommentDelete(comId))
+            {
+                return Redirect("/Home/Detail?ProId=" + proId);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
