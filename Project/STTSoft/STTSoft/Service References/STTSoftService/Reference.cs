@@ -633,6 +633,10 @@ namespace STTSoft.STTSoftService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/OrderDelete", ReplyAction="*")]
         bool OrderDelete(int ordId);
+        
+        // CODEGEN: Generating message contract since element name accName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/OrderDaiLyList", ReplyAction="*")]
+        STTSoft.STTSoftService.OrderDaiLyListResponse OrderDaiLyList(STTSoft.STTSoftService.OrderDaiLyListRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1631,6 +1635,74 @@ namespace STTSoft.STTSoftService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class OrderDaiLyListRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="OrderDaiLyList", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.OrderDaiLyListRequestBody Body;
+        
+        public OrderDaiLyListRequest() {
+        }
+        
+        public OrderDaiLyListRequest(STTSoft.STTSoftService.OrderDaiLyListRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class OrderDaiLyListRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string accName;
+        
+        public OrderDaiLyListRequestBody() {
+        }
+        
+        public OrderDaiLyListRequestBody(string accName) {
+            this.accName = accName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class OrderDaiLyListResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="OrderDaiLyListResponse", Namespace="http://tempuri.org/", Order=0)]
+        public STTSoft.STTSoftService.OrderDaiLyListResponseBody Body;
+        
+        public OrderDaiLyListResponse() {
+        }
+        
+        public OrderDaiLyListResponse(STTSoft.STTSoftService.OrderDaiLyListResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class OrderDaiLyListResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public STTSoft.STTSoftService.OrderDTO[] OrderDaiLyListResult;
+        
+        public OrderDaiLyListResponseBody() {
+        }
+        
+        public OrderDaiLyListResponseBody(STTSoft.STTSoftService.OrderDTO[] OrderDaiLyListResult) {
+            this.OrderDaiLyListResult = OrderDaiLyListResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface AdminServiceSoapChannel : STTSoft.STTSoftService.AdminServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -1868,6 +1940,19 @@ namespace STTSoft.STTSoftService {
         
         public bool OrderDelete(int ordId) {
             return base.Channel.OrderDelete(ordId);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        STTSoft.STTSoftService.OrderDaiLyListResponse STTSoft.STTSoftService.AdminServiceSoap.OrderDaiLyList(STTSoft.STTSoftService.OrderDaiLyListRequest request) {
+            return base.Channel.OrderDaiLyList(request);
+        }
+        
+        public STTSoft.STTSoftService.OrderDTO[] OrderDaiLyList(string accName) {
+            STTSoft.STTSoftService.OrderDaiLyListRequest inValue = new STTSoft.STTSoftService.OrderDaiLyListRequest();
+            inValue.Body = new STTSoft.STTSoftService.OrderDaiLyListRequestBody();
+            inValue.Body.accName = accName;
+            STTSoft.STTSoftService.OrderDaiLyListResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).OrderDaiLyList(inValue);
+            return retVal.Body.OrderDaiLyListResult;
         }
     }
 }
