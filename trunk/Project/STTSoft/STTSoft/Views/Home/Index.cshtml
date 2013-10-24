@@ -34,19 +34,19 @@
             </div>
 
             <div class="widget-content">
-                <div class="padd">
+                <div class="padd" style="background-color:whitesmoke">
                     <div class="user">
-                        <div class="user-pic">
+                        <div class="user-pic" >
                             <!-- Hình ảnh sản phẩm -->
                             <a href="../Home/Detail?ProId=@p.ProId">
-                                <img src="../../Content/img/productImage/CallOfDuty.jpg" alt=""></a>
+                                <img src="../../Content/img/productImage/CallOfDuty.jpg" alt="" style="width: 150px; height: 70px"></a>
                         </div>
 
                         <div class="user-details">
                             <!--Giá sản phẩm -->
-                            <h6>@p.ProPrice.ToString("0,0") VND</h6>
+                            <h6 class="text-info" style="color: red">@p.ProPrice.ToString("0,0") VND</h6>
                             <!--Short description -->
-                            <p>@p.ProDetail</p>
+                            <p class="text-info">@p.ProDetail</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
