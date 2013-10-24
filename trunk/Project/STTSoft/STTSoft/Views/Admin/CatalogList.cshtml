@@ -11,6 +11,8 @@
     <tr style="color: blue">
         <th>ID</th>
         <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     @foreach(var category in Model)
     {
@@ -18,7 +20,9 @@
             <td>@category.CatId</td>
             <td>@category.CatName</td>
             <td><a href="/Admin/CatalogEdit?catId=@category.CatId">Edit</a></td>
-            <td><a href="/Admin/CatalogDelete?catId=@category.CatName">Delete</a></td>
+            <td><a href="/Admin/CatalogDelete?catId=@category.CatId">Delete</a></td>
         </tr>
     }
 </table>
+<br/>
+<a href="/Admin/CatalogList">CatalogList</a>
