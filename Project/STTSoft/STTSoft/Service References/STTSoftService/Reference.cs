@@ -1039,14 +1039,18 @@ namespace STTSoft.STTSoftService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public double proPrice;
         
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public int catId;
+        
         public ProductInsertRequestBody() {
         }
         
-        public ProductInsertRequestBody(string proName, string proDetail, string proImage, double proPrice) {
+        public ProductInsertRequestBody(string proName, string proDetail, string proImage, double proPrice, int catId) {
             this.proName = proName;
             this.proDetail = proDetail;
             this.proImage = proImage;
             this.proPrice = proPrice;
+            this.catId = catId;
         }
     }
     
@@ -1810,13 +1814,14 @@ namespace STTSoft.STTSoftService {
             return base.Channel.ProductInsert(request);
         }
         
-        public bool ProductInsert(string proName, string proDetail, string proImage, double proPrice) {
+        public bool ProductInsert(string proName, string proDetail, string proImage, double proPrice, int catId) {
             STTSoft.STTSoftService.ProductInsertRequest inValue = new STTSoft.STTSoftService.ProductInsertRequest();
             inValue.Body = new STTSoft.STTSoftService.ProductInsertRequestBody();
             inValue.Body.proName = proName;
             inValue.Body.proDetail = proDetail;
             inValue.Body.proImage = proImage;
             inValue.Body.proPrice = proPrice;
+            inValue.Body.catId = catId;
             STTSoft.STTSoftService.ProductInsertResponse retVal = ((STTSoft.STTSoftService.AdminServiceSoap)(this)).ProductInsert(inValue);
             return retVal.Body.ProductInsertResult;
         }
