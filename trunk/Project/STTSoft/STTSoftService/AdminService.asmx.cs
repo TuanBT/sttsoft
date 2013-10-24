@@ -435,5 +435,35 @@ namespace STTSoftService
             return true;
         }
         #endregion
+
+        #region order Dai ly
+
+        [WebMethod]
+        public List<OrderDTO> OrderDaiLyList(string accName)
+        {
+            var listOrder =
+               (from or in db.Orders
+                join ord in db.OrderDetails on or.OrId equals ord.OrId
+                join pro in db.Products on ord.ProId equals pro.ProId
+                //where or.AccName == accName
+                where ord.OrdSaler == accName
+                select new OrderDTO()
+                {
+                    AccName = or.AccName,
+                    OrDate = or.OrDate,
+                    OrId = or.OrId,
+                    OrdId = ord.OrdId,
+                    OrdQuantity = ord.OrdQuantity,
+                    OrdSaler = ord.OrdSaler,
+                    ProId = pro.ProId,
+                    ProImage = pro.ProImage,
+                    ProName = pro.ProName,
+                    ProPrice = pro.ProPrice
+                }
+
+               ).ToList();
+            return listOrder;
+        }
+        #endregion
     }
 }
