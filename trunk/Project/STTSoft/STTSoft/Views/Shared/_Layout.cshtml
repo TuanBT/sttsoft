@@ -226,7 +226,10 @@
                                         <li><a href="@Url.Action("AccountList", "Admin")">Quản lý tài khoản</a></li>
                                         <li><a href="@Url.Action("BankList", "Admin")">Quản lý ngân hàng</a></li>
                                     }
-                                    <li><a href="/Admin/OrderDaiLyList">Quản lý đơn hàng</a></li>
+                                     @if ((string)Session["role"] == "D")
+                                     {
+                                         <li><a href="/Admin/OrderDaiLyList">Quản lý đơn hàng</a></li>
+                                     }
                                     @*@Session["username"]*@
                                 </ul>
                             </li>
