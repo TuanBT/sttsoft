@@ -124,30 +124,30 @@
                     <!-- Members button with number of latest members count -->
                     @if (Session["username"] != null)
                     {
-                    <li class="dropdown dropdown-big">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                            <i class="icon-user"></i>@Session["username"]<b class="caret"></b>
-                        </a>
+                        <li class="dropdown dropdown-big">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <i class="icon-user"></i>@Session["username"]<b class="caret"></b>
+                            </a>
 
-                        <ul class="dropdown-menu">
-                            <li>
-                                <!-- Heading - h5 -->
-                                <h5><i class="icon-user"></i>@Session["username"]</h5>
-                                <!-- Use hr tag to add border -->
-                                <hr />
-                            </li>
-                            <li>
-                                <!-- List item heading h6-->
-                                <a href="@Url.Action("Account","Account")">My profile</a>
-                                <div class="clearfix"></div>
-                                <hr />
-                            </li>
-                            
-                            
-                           
-                        </ul>
-                    </li>
-                        }
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <!-- Heading - h5 -->
+                                    <h5><i class="icon-user"></i>@Session["username"]</h5>
+                                    <!-- Use hr tag to add border -->
+                                    <hr />
+                                </li>
+                                <li>
+                                    <!-- List item heading h6-->
+                                    <a href="@Url.Action("Account", "Account")">My profile</a>
+                                    <div class="clearfix"></div>
+                                    <hr />
+                                </li>
+
+
+
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </nav>
         </div>
@@ -202,21 +202,34 @@
                     </li>
                     @if (Session["username"] != null)
                     {
-                        if ((string)Session["role"] == "A")
+                        if ((string)Session["role"] == "A" || (string)Session["role"] == "D")
                         {
-                        <li class="has_submenu nviolet open">
-                            <a href="#">
-                                <i class="icon-file-alt"></i>Admin
-                                 <span class="pull-right"><i class="icon-angle-right"></i></span>
-                            </a>
-
-                            <ul>
-                                <li><a href="@Url.Action("ProductList", "Admin")">Quản lý sản phẩm</a></li>
-                                <li><a href="@Url.Action("CatalogList", "Admin")">Quản lý danh mục</a></li>
-                                <li><a href="@Url.Action("AccountList", "Admin")">Quản lý tài khoản</a></li>
-                                <li><a href="@Url.Action("BankList", "Admin")">Quản lý ngân hàng</a></li>
-                            </ul>
-                        </li>
+                            <li class="has_submenu nviolet open">
+                                @if ((string)Session["role"] == "A")
+                                {
+                                    <a href="#">
+                                        <i class="icon-file-alt"></i> Admin
+                                        <span class="pull-right"><i class="icon-angle-right"></i></span>
+                                    </a>
+                                }else
+                                {
+                                    <a href="#">
+                                        <i class="icon-file-alt"></i> Đại lý
+                                        <span class="pull-right"><i class="icon-angle-right"></i></span>
+                                    </a>
+                                }
+                                <ul>
+                                    @if ((string)Session["role"] == "A")
+                                    {
+                                        <li><a href="@Url.Action("ProductList", "Admin")">Quản lý sản phẩm</a></li>
+                                        <li><a href="@Url.Action("CatalogList", "Admin")">Quản lý danh mục</a></li>
+                                        <li><a href="@Url.Action("AccountList", "Admin")">Quản lý tài khoản</a></li>
+                                        <li><a href="@Url.Action("BankList", "Admin")">Quản lý ngân hàng</a></li>
+                                    }
+                                    <li><a href="/Admin/OrderDaiLyList">Quản lý đơn hàng</a></li>
+                                    @*@Session["username"]*@
+                                </ul>
+                            </li>
                         }
                         else if ((string)Session["role"] == "D")
                         {
