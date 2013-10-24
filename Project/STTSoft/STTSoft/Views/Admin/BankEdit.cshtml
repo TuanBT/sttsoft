@@ -1,28 +1,23 @@
 ﻿@{
     ViewBag.Title = "BankEdit";
 }
-<h2>
-    BankEdit</h2>
+<h2>BankEdit</h2>
 @model STTSoft.Models.Bank
 <form action="/Admin/BankEdit" method="POST">
-<table>
-    <tr>
-        <td>
-            Name: @Model.AccName
-            <br />
-        </td>
-        <td>
-            Role:
-        </td>
-        <td>
-            <input name="txtBankMoney" value="@Model.BanMoney"/><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <button type="submit" class="btn btn-primary">
-                Submit</button>
-        </td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <td>Name
+            </td>
+            <td>
+                @Model.AccName
+            </td>
+        </tr>
+        <tr>
+            <td>Money
+            </td>
+            <td>
+                <input name="txtBankMoney" value="@Model.BanMoney"/>
+            </td>
+        </tr>
+    </table>
 </form>
