@@ -208,22 +208,22 @@ namespace STTSoft.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            catch (ArgumentNullException)
-            {
-                return View("Error");
-            }
-            catch (InvalidOperationException)
-            {
-                return View("Error");
-            }
-            catch (FormatException)
-            {
-                return View("Error");
-            }
-            catch (OverflowException)
-            {
-                return View("Error");
-            }
+            //catch (ArgumentNullException)
+            //{
+            //    return View("Error");
+            //}
+            //catch (InvalidOperationException)
+            //{
+            //    return View("Error");
+            //}
+            //catch (FormatException)
+            //{
+            //    return View("Error");
+            //}
+            //catch (OverflowException)
+            //{
+            //    return View("Error");
+            //}
             catch (NotImplementedException)
             {
                 return View("Error");
