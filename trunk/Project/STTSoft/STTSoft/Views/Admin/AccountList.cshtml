@@ -1,45 +1,55 @@
-﻿@{
+﻿@model List<STTSoft.STTSoftService.AccountDTO>
+@{
     ViewBag.Title = "AccountList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<STTSoft.STTSoftService.AccountDTO>
-<h2>AccountList</h2>
+
+@if ((string)Session["role"] == "A")
+{
+    <h2>AccountList</h2>
 
 
-<div class="widget-content medias">
-    <table class="table table-bordered ">
-        <thead>
-            <tr>
-                <th style="color: royalblue">Name</th>
-                <th style="color: royalblue">Role</th>
-                <th style="color: royalblue">Level</th>
-                <th style="color: royalblue">Mail</th>
-                <th style="color: royalblue">Phone</th>
-                <th style="color: royalblue">Edit</th>
-                <th style="color: royalblue">Delete</th>
-                <th style="color: royalblue">Order manager</th>
-            </tr>
-        </thead>
-        @foreach (var account in Model)
-        {
-            <tbody>
+    <div class="widget-content medias">
+        <table class="table table-bordered ">
+            <thead>
                 <tr>
-                    <td>@account.AccName</td>
-                    <td>@account.AccRole</td>
-                    <td>@account.AccLevel</td>
-                    <td>@account.AccMail</td>
-                    <td>@account.AccPhone</td>
-                    <td><a href="/Admin/AccountEdit?accName=@account.AccName" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
-                    <td><a href="/Admin/AccountDelete?accName=@account.AccName" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
-                    <td>
-                        @if (account.IsOrder)
-                        {
-                            <a href="/Admin/OrderList?accName=@account.AccName" class="btn btn-primary">Order manager</a>
-                        }
-                    </td>
+                    <th style="color: royalblue">Name</th>
+                    <th style="color: royalblue">Role</th>
+                    <th style="color: royalblue">Level</th>
+                    <th style="color: royalblue">Mail</th>
+                    <th style="color: royalblue">Phone</th>
+                    <th style="color: royalblue">Edit</th>
+                    <th style="color: royalblue">Delete</th>
+                    <th style="color: royalblue">Order manager</th>
                 </tr>
-            </tbody>
-        }
-    </table>
-</div>
+            </thead>
+            @foreach (var account in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@account.AccName</td>
+                        <td>@account.AccRole</td>
+                        <td>@account.AccLevel</td>
+                        <td>@account.AccMail</td>
+                        <td>@account.AccPhone</td>
+                        <td><a href="/Admin/AccountEdit?accName=@account.AccName" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
+                        <td><a href="/Admin/AccountDelete?accName=@account.AccName" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
+                        <td>
+                            @if (account.IsOrder)
+                            {
+                                <a href="/Admin/OrderList?accName=@account.AccName" class="btn btn-primary">Order manager</a>
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}
 

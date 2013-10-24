@@ -1,38 +1,47 @@
-﻿@{
+﻿@model List<STTSoft.STTSoftService.ProductDTO>
+@{
     ViewBag.Title = "ProductList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>ProductList</h2>
-@model List<STTSoft.STTSoftService.ProductDTO>
-<div class="widget-content medias">
-    <table class="table table-bordered ">
-        <thead>
-            <tr>
-                <th style="color: royalblue">ID</th>
-                <th style="color: royalblue">Name</th>
-                <th style="color: royalblue">Detail</th>
-                <th style="color: royalblue">Image</th>
-                <th style="color: royalblue">Price</th>
-                <th style="color: royalblue">Edit</th>
-                <th style="color: royalblue">Delete</th>
-            </tr>
-        </thead>
-        @foreach (var product in Model)
-        {
-            <tbody>
+@if ((string)Session["role"] == "A")
+{
+    <h2>ProductList</h2>
+   
+    <div class="widget-content medias">
+        <table class="table table-bordered ">
+            <thead>
                 <tr>
-                    <td>@product.ProId</td>
-                    <td>@product.ProName</td>
-                    <td>@product.ProDetail</td>
-                    <td>@product.ProImage</td>
-                    <td>@product.ProPrice.ToString("0,0") VND</td>
-                    <td><a href="/Admin/ProductEdit?proId=@product.ProId" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
-                    <td><a href="/Admin/ProductDelete?proId=@product.ProId" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
+                    <th style="color: royalblue">ID</th>
+                    <th style="color: royalblue">Name</th>
+                    <th style="color: royalblue">Detail</th>
+                    <th style="color: royalblue">Image</th>
+                    <th style="color: royalblue">Price</th>
+                    <th style="color: royalblue">Edit</th>
+                    <th style="color: royalblue">Delete</th>
                 </tr>
-            </tbody>
-        }
-    </table>
-</div>
-<br />
-<a href="/Admin/ProductInsert" class="btn btn-primary">Insert Product</a>
+            </thead>
+            @foreach (var product in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@product.ProId</td>
+                        <td>@product.ProName</td>
+                        <td>@product.ProDetail</td>
+                        <td>@product.ProImage</td>
+                        <td>@product.ProPrice.ToString("0,0") VND</td>
+                        <td><a href="/Admin/ProductEdit?proId=@product.ProId" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
+                        <td><a href="/Admin/ProductDelete?proId=@product.ProId" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+    <br />
+    <a href="/Admin/ProductInsert" class="btn btn-primary">Insert Product</a>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}

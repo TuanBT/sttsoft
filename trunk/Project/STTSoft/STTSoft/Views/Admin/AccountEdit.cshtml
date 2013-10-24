@@ -1,56 +1,63 @@
-﻿@{
+﻿@model STTSoft.Models.Account
+@{
     ViewBag.Title = "AccountEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>
-    AccountEdit</h2>
-@model STTSoft.Models.Account
-<form action="/Admin/AccountEdit" method="POST">
-<table class="table-hover">
-    <tr>
-        <td>
-            Name:
-        </td>
-        <td>
-            <input  name="txtName" value="@Model.AccName"/><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Role:
-        </td>
-        <td>
-            <input name="txtRole" value="@Model.AccRole"/><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Level:
-        </td>
-        <td>
-            <input name="txtLevel" value="@Model.AccLevel"/><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Mail:
-        </td>
-        <td>
-            <input name="txtMail" value="@Model.AccMail"/><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Phone:
-        </td>
-        <td>
-            <input name="txtPhone" value="@Model.AccPhone"/><br />
-        </td>
-    </tr>
-    <tr>
-        <td> <button type="submit"  class="btn btn-primary">
-            Submit</button></td>
-       
-    </tr>
-</table>
-</form>
+
+
+
+@if ((string)Session["role"] == "A")
+{
+    <h2>AccountEdit</h2>
+    <form action="/Admin/AccountEdit" method="POST">
+        <table class="table-hover">
+            <tr>
+                <td>Name:
+                </td>
+                <td>
+                    <input  name="txtName" value="@Model.AccName"/><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Role:
+                </td>
+                <td>
+                    <input name="txtRole" value="@Model.AccRole"/><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Level:
+                </td>
+                <td>
+                    <input name="txtLevel" value="@Model.AccLevel"/><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Mail:
+                </td>
+                <td>
+                    <input name="txtMail" value="@Model.AccMail"/><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Phone:
+                </td>
+                <td>
+                    <input name="txtPhone" value="@Model.AccPhone"/><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">
+                        Submit</button></td>
+
+            </tr>
+        </table>
+    </form>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}

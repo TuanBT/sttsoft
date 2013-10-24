@@ -1,11 +1,13 @@
-﻿@{
+﻿ @model List<STTSoft.STTSoftService.OrderDTO>
+@{
     ViewBag.Title = "OrderList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if ((string)Session["role"] == "A")
+{
+    <h2>OrderList</h2>
 
-<h2>OrderList</h2>
-
-@model List<STTSoft.STTSoftService.OrderDTO>
+   
 <div class="widget-content medias">
     <table class="table table-bordered ">
         <thead>
@@ -40,4 +42,11 @@
             </tbody>
         }
     </table>
-</div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}

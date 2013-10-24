@@ -1,11 +1,13 @@
-﻿@{
+﻿  @model List<STTSoft.STTSoftService.CategoryDTO>
+@{
     ViewBag.Title = "CatalogList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if ((string)Session["role"] == "A")
+{
+    <h2>CatalogList</h2>
 
-<h2>CatalogList</h2>
-
-@model List<STTSoft.STTSoftService.CategoryDTO>
+  
 <div class="widget-content medias">
     <table class="table table-bordered ">
         <thead>
@@ -28,6 +30,13 @@
             </tbody>
         }
     </table>
-</div>
-<br />
-<a href="/Admin/CatalogInsert" class="btn btn-primary">Insert Catalog</a>
+    </div>
+    <br />
+    <a href="/Admin/CatalogInsert" class="btn btn-primary">Insert Catalog</a>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}

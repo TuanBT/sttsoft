@@ -14,6 +14,13 @@ $(function() {
         validateRegister();
     });
 });
+
+$(function () {
+    $('#CreateNum').click(function (
+    ) {
+        validateNumber();
+    });
+});
 $(function () {
     $('#CreateCat').click(function (
     ) {
@@ -46,6 +53,10 @@ function validateRegister() {
         //&& isChecked("gender", "Please check a gender!")
         //&& isChecked("color", "Please check a color!")
         && isNumeric("phone", "Vui lòng chỉ nhập số")
+        );
+}
+function validateNumber() {
+    return (isNumeric("numberProduct", "Vui lòng chỉ nhập số")
         );
 }
 

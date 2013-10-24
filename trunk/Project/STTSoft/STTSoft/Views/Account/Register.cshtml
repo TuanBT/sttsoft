@@ -16,6 +16,8 @@
     <link href="@Url.Content("~/Content/style/bootstrap.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/style/font-awesome.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/style/style.css")" rel="stylesheet" type="text/css" />
+    
+    <script src="@Url.Content("~/Content/js/FormValidation.js")"></script>
 
     <!-- HTML5 Support for IE -->
     <!--[if lt IE 9]>
@@ -40,7 +42,7 @@
                         <div class="widget-content">
                             <div class="padd">
 
-                                <form action="/Account/Register" method="POST" class="form-horizontal">
+                                <form onsubmit="return validateRegister()" action="/Account/Register" method="POST" class="form-horizontal">
                                     <!-- Registration form starts -->
                                     <span class="red">@ViewBag.Status</span>
                                     <!-- Username -->
@@ -48,6 +50,7 @@
                                         <label class="control-label col-lg-3" for="username">Username</label>
                                         <div class="col-lg-9">
                                             <input type="text" name="username" class="form-control" id="username">
+                                            <span id="usernameError" class="red"></span>
                                         </div>
                                     </div>
                                     <!-- Password -->
@@ -55,6 +58,15 @@
                                         <label class="control-label col-lg-3" for="email">Password</label>
                                         <div class="col-lg-9">
                                             <input type="password" name="password" class="form-control" id="password">
+                                            <span id="passwordError" class="red"></span>
+                                        </div>
+                                    </div>
+                                      <!-- Password -->
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-3" for="email">Password Confirm</label>
+                                        <div class="col-lg-9">
+                                            <input type="password" name="pwVerified" class="form-control" id="pwVerified">
+                                            <span id="pwVerifiedError" class="red"></span>
                                         </div>
                                     </div>
                                     <!-- Role -->
@@ -75,18 +87,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Name -->
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-3" for="name">Name</label>
-                                        <div class="col-lg-9">
-                                            <input type="text" name="name" class="form-control" id="name">
-                                        </div>
-                                    </div>
+                                   
                                     <!-- Email -->
                                     <div class="form-group">
                                         <label class="control-label col-lg-3" for="email">Email</label>
                                         <div class="col-lg-9">
                                             <input type="text" name="sendEmail" class="form-control" id="email">
+                                             <span id="emailError" class="red"></span>
                                         </div>
                                     </div>
                                      <!-- Email -->
@@ -94,8 +101,11 @@
                                         <label class="control-label col-lg-3" for="email">Phone</label>
                                         <div class="col-lg-9">
                                             <input type="text" name="phone" class="form-control" id="phone">
+                                            <span id="phoneError" class="red"></span>
                                         </div>
                                     </div>
+                                    <input name="subject" type="hidden" value="STT-SOFT" />
+                                    <input name="message" type="hidden" value="Chuc mung ban da dang ki thanh cong" />
                                     <!-- Accept box and button s-->
                                     <div class="form-group">
                                         <div class="col-lg-9 col-lg-offset-3">

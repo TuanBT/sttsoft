@@ -2,63 +2,65 @@
     ViewBag.Title = "AccountInsert";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>
-    AccountInsert</h2>
-<form action="/Admin/AccountInsert" method="POST">
-<table>
-    <tr>
-        <td>
-            Name:
-        </td>
-        <td>
-            <input name="txtName" value="" /><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Role:
-        </td>
-        <td>
-            <input name="txtRole" value="" /><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Level:
-        </td>
-        <td>
-            <input name="txtLevel" value="" /><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Mail:
-        </td>
-        <td>
-            <input name="txtMail" value="" /><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Phone:
-        </td>
-        <td>
-            <input name="txtPhone" value="" /><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Password:
-        </td>
-        <td>
-            <input name="txtPass" value="" type="password" /><br />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <button type="submit" class="btn btn-primary">
-                Submit</button>
-        </td>
-    </tr>
-</table>
-</form>
+@if ((string)Session["role"] == "A")
+{
+    <h2>AccountInsert</h2>
+    <form onsubmit="return validateRegister()" action="/Admin/AccountInsert" method="POST">
+        <table>
+            <tr>
+                <td>Name:
+                </td>
+                <td>
+                    <input name="txtName" value="" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Role:
+                </td>
+                <td>
+                    <input name="txtRole" value="" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Level:
+                </td>
+                <td>
+                    <input name="txtLevel" value="" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Mail:
+                </td>
+                <td>
+                    <input name="txtMail" value="" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Phone:
+                </td>
+                <td>
+                    <input name="txtPhone" value="" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>Password:
+                </td>
+                <td>
+                    <input name="txtPass" value="" type="password" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">
+                        Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+}
+else
+{
+    <div class="row">
+        <h2>Bạn không có quyền truy cập trang này.  <a href="@Url.Action("Index", "Home")">Click here</a></h2>
+    </div>
+}
