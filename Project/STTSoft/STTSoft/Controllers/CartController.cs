@@ -143,7 +143,7 @@ namespace STTSoft.Controllers
                    
                         order.AccName = Session["username"].ToString();
                         order.OrDate = DateTime.Now;
-                        order.OrTotal = Convert.ToDecimal(Request.Params["txtTotal"]);
+                        //order.OrTotal = Convert.ToDecimal(Request.Params["txtTotal"]);
                         db.Orders.InsertOnSubmit(order);
                         db.SubmitChanges();
                         var orid = (from o in db.Orders orderby o.OrId descending select o.OrId).First();
@@ -163,7 +163,7 @@ namespace STTSoft.Controllers
                                     var product = db.Products.Single(p => p.ProId == proId);
                                     orderd.OrdQuantity = quantity;
                                     orderd.OrdId = Convert.ToInt32(orid);
-                                    orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
+                                    //orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
                                     orderd.OrId = orid;
 
                                     var account = (from acc in db.Accounts
@@ -188,7 +188,7 @@ namespace STTSoft.Controllers
                                     var product = db.Products.Single(p => p.ProId == proId);
                                     orderd.OrdQuantity = quantity;
                                     orderd.OrdId = Convert.ToInt32(orid);
-                                    orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
+                                    //orderd.OrdTotal = Convert.ToDouble(product.ProPrice * quantity);
                                     orderd.OrId = orid;
                                     var account = db.Banks.Single(acc => acc.AccName == accName);
                                     account.BanMoney = account.BanMoney - (double)Session["AllTotal"];
