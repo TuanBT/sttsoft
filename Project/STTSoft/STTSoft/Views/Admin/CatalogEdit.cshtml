@@ -8,6 +8,7 @@
 @model STTSoft.Models.Category
 
 <form action="/Admin/CatalogEdit" method="POST">
-    Name: <input name="txtName" value="@Model.CatName"/><br/>
+    <input type="hidden" name="txtCatId" value="@Model.CatId"/>
+    Name: <input name="txtCatName" value="@Model.CatName"/><br/>
     <button type="submit">Submit</button>
 </form>  
