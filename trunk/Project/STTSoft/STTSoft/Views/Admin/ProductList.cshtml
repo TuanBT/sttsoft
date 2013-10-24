@@ -26,7 +26,7 @@
                     <td>@product.ProName</td>
                     <td>@product.ProDetail</td>
                     <td>@product.ProImage</td>
-                    <td>@product.ProPrice</td>
+                    <td>@product.ProPrice.ToString("0,0") VND</td>
                     <td><a href="/Admin/ProductEdit?proId=@product.ProId" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
                     <td><a href="/Admin/ProductDelete?proId=@product.ProId" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
                 </tr>
