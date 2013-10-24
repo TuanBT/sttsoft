@@ -33,7 +33,7 @@
                     <td>@order.OrdSaler</td>
                     <td>@order.ProName</td>
                     <td>@order.ProImage</td>
-                    <td>@order.ProPrice</td>
+                    <td>@order.ProPrice.ToString("0,0") VND</td>
                     <td><a href="/Admin/OrderEdit?ordId=@order.OrdId&accName=@order.AccName" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
                     <td><a href="/Admin/OrderDelete?ordId=@order.OrdId" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
                 </tr>
