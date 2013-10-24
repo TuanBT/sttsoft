@@ -173,6 +173,7 @@ namespace STTSoft.Controllers
 
         public ActionResult IndexSearch()
         {
+		Acident
             return View();
         }
 
