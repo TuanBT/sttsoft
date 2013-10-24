@@ -2,10 +2,23 @@
     ViewBag.Title = "CatalogInsert";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>CatalogInsert</h2>
-
-<form action="/Admin/CatalogInsert" method="POST">     
-    Name: <input name="txtName" value=""/><br/>
-    <button type="submit"  class="btn btn-primary">Submit</button>
-</form>  
+<h2>
+    CatalogInsert</h2>
+<form action="/Admin/CatalogInsert" method="POST">
+<table>
+    <tr>
+        <td>
+            Name:
+        </td>
+        <td>
+            <input name="txtName" value="" /><br />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type="submit" class="btn btn-primary">
+                Submit</button>
+        </td>
+    </tr>
+</table>
+</form>

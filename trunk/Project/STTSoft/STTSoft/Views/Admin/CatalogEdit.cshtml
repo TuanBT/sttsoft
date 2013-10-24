@@ -2,13 +2,25 @@
     ViewBag.Title = "CatalogEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>CatalogEdit</h2>
-
+<h2>
+    CatalogEdit</h2>
 @model STTSoft.Models.Category
-
 <form action="/Admin/CatalogEdit" method="POST">
+<table>
     <input type="hidden" name="txtCatId" value="@Model.CatId"/>
-    Name: <input name="txtCatName" value="@Model.CatName"/><br/>
-    <button type="submit"  class="btn btn-primary">Submit</button>
-</form>  
+    <tr>
+        <td>
+            Name:
+        </td>
+        <td>
+            <input name="txtCatName" value="@Model.CatName"/><br />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type="submit" class="btn btn-primary">
+                Submit</button>
+        </td>
+    </tr>
+</table>
+</form>
