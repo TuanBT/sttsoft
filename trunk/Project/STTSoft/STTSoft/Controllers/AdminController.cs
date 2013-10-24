@@ -233,8 +233,13 @@ namespace STTSoft.Controllers
 
         #endregion
 
-        #region OrderDetail
-
+        #region OrderDaily
+         public ActionResult OrderDaiLyList()
+         {
+             var accName = @Session["username"].ToString();
+             var listOrder = service.OrderDaiLyList(accName).ToList();
+             return View(listOrder);
+         }
         #endregion
 
         #region Bank
