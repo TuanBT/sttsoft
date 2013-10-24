@@ -5,29 +5,34 @@
 
 <h2>ProductList</h2>
 @model List<STTSoft.STTSoftService.ProductDTO>
-
-<table border="1">
-    <tr style="color: blue">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Detail</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-    @foreach(var product in Model)
-    {
-        <tr>
-            <td>@product.ProId</td>
-            <td>@product.ProName</td>
-            <td>@product.ProDetail</td>
-            <td>@product.ProImage</td>
-            <td>@product.ProPrice</td>
-            <td><a href="/Admin/ProductEdit?proId=@product.ProId">Edit</a></td>
-            <td><a href="/Admin/ProductDelete?proId=@product.ProId">Delete</a></td>
-        </tr>
-    }
-</table>
-<br/>
-<a href="/Admin/ProductInsert">ProductInsert</a>
+<div class="widget-content medias">
+    <table class="table table-bordered ">
+        <thead>
+            <tr>
+                <th style="color: royalblue">ID</th>
+                <th style="color: royalblue">Name</th>
+                <th style="color: royalblue">Detail</th>
+                <th style="color: royalblue">Image</th>
+                <th style="color: royalblue">Price</th>
+                <th style="color: royalblue">Edit</th>
+                <th style="color: royalblue">Delete</th>
+            </tr>
+        </thead>
+        @foreach (var product in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@product.ProId</td>
+                    <td>@product.ProName</td>
+                    <td>@product.ProDetail</td>
+                    <td>@product.ProImage</td>
+                    <td>@product.ProPrice</td>
+                    <td><a href="/Admin/ProductEdit?proId=@product.ProId" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
+                    <td><a href="/Admin/ProductDelete?proId=@product.ProId" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+<br />
+<a href="/Admin/ProductInsert" class="btn btn-primary">Insert Product</a>
