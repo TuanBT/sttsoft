@@ -4719,7 +4719,8 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 
 .navbar-nav
 {
-	margin: 7.5px -15px;
+	/*margin: 7.5px -15px;*/
+    margin: 7.5px 0;
 }
 
 	.navbar-nav > li > a
