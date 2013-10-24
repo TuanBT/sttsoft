@@ -6,33 +6,38 @@
 <h2>OrderList</h2>
 
 @model List<STTSoft.STTSoftService.OrderDTO>
-
-<table border="1">
-    <tr style="color: blue">
-        <th>Id</th>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Quanlity</th>
-        <th>Saler</th>
-        <th>Product name</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-    @foreach (var order in Model)
-    {
-        <tr>
-            <td>@order.OrdId</td>
-            <td>@order.AccName</td>
-            <td>@order.OrDate</td>
-            <td>@order.OrdQuantity</td>
-            <td>@order.OrdSaler</td>
-            <td>@order.ProName</td>
-            <td>@order.ProImage</td>
-            <td>@order.ProPrice</td>
-            <td><a href="/Admin/OrderEdit?ordId=@order.OrdId&accName=@order.AccName">Edit</a></td>
-            <td><a href="/Admin/OrderDelete?ordId=@order.OrdId">Delete</a></td>
-        </tr>
-    }
-</table>
+<div class="widget-content medias">
+    <table class="table table-bordered ">
+        <thead>
+            <tr>
+                <th style="color: royalblue">Id</th>
+                <th style="color: royalblue">Name</th>
+                <th style="color: royalblue">Date</th>
+                <th style="color: royalblue">Quanlity</th>
+                <th style="color: royalblue">Saler</th>
+                <th style="color: royalblue">Product name</th>
+                <th style="color: royalblue">Image</th>
+                <th style="color: royalblue">Price</th>
+                <th style="color: royalblue">Edit</th>
+                <th style="color: royalblue">Delete</th>
+            </tr>
+        </thead>
+        @foreach (var order in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@order.OrdId</td>
+                    <td>@order.AccName</td>
+                    <td>@order.OrDate</td>
+                    <td>@order.OrdQuantity</td>
+                    <td>@order.OrdSaler</td>
+                    <td>@order.ProName</td>
+                    <td>@order.ProImage</td>
+                    <td>@order.ProPrice</td>
+                    <td><a href="/Admin/OrderEdit?ordId=@order.OrdId&accName=@order.AccName" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
+                    <td><a href="/Admin/OrderDelete?ordId=@order.OrdId" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

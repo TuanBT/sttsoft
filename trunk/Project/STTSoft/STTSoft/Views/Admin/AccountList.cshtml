@@ -5,33 +5,41 @@
 @model List<STTSoft.STTSoftService.AccountDTO>
 <h2>AccountList</h2>
 
-<table border="1">
-    <tr style="color: blue">
-        <th>Name</th>
-        <th>Role</th>
-        <th>Level</th>
-        <th>Mail</th>
-        <th>Phone</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>Order manager</th>
-    </tr>
-    @foreach (var account in Model)
-    {
-        <tr>
-            <td>@account.AccName</td>
-            <td>@account.AccRole</td>
-            <td>@account.AccLevel</td>
-            <td>@account.AccMail</td>
-            <td>@account.AccPhone</td>
-            <td><a href="/Admin/AccountEdit?accName=@account.AccName">Edit</a></td>
-            <td><a href="/Admin/AccountDelete?accName=@account.AccName">Delete</a></td>
-            <td>
-                @if (account.IsOrder)
-                {
-                    <a href="/Admin/OrderList?accName=@account.AccName">Order manager</a>
-                }
-            </td>
-        </tr>
-    }
-</table>
+
+<div class="widget-content medias">
+    <table class="table table-bordered ">
+        <thead>
+            <tr>
+                <th style="color: royalblue">Name</th>
+                <th style="color: royalblue">Role</th>
+                <th style="color: royalblue">Level</th>
+                <th style="color: royalblue">Mail</th>
+                <th style="color: royalblue">Phone</th>
+                <th style="color: royalblue">Edit</th>
+                <th style="color: royalblue">Delete</th>
+                <th style="color: royalblue">Order manager</th>
+            </tr>
+        </thead>
+        @foreach (var account in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@account.AccName</td>
+                    <td>@account.AccRole</td>
+                    <td>@account.AccLevel</td>
+                    <td>@account.AccMail</td>
+                    <td>@account.AccPhone</td>
+                    <td><a href="/Admin/AccountEdit?accName=@account.AccName" class="btn btn-sm btn-danger"><i class="icon-pencil"></i></a></td>
+                    <td><a href="/Admin/AccountDelete?accName=@account.AccName" class="btn btn-sm btn-info"><i class="icon-remove"></i></a></td>
+                    <td>
+                        @if (account.IsOrder)
+                        {
+                            <a href="/Admin/OrderList?accName=@account.AccName" class="btn btn-primary">Order manager</a>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
