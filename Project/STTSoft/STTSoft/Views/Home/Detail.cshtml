@@ -67,9 +67,9 @@
                 </div>
             </div>
             <div style="overflow: scroll; height: 400px">
-                @foreach (var item in comment)
+                @for (int i = comment.Count - 1; i > 0;i--)
                 {
-                    <div class="widget-content">
+                <div class="widget-content">
                         <div class="padd">
                             <div class="user">
                                 <div class="col-md-9">
@@ -80,16 +80,16 @@
                                     </div>
                                     <div class="user-details">
                                         <h6>
-                                            User <a class="text-danger">@item.AccName</a>
+                                            User <a class="text-danger">@comment[i].AccName</a>
                                         </h6>
                                         <p>
-                                            @item.ComContent</p>
+                                            @comment[i].ComContent</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     @if ((string) Session["role"] == "A")
                                     {
-                                        <a href="/Home/DeleteComment?comId=@item.ComId&&proId=@product.ProId" class="btn btn-sm btn-danger"><i class="icon-remove"></i></a>
+                                        <a href="/Home/DeleteComment?comId=@comment[i].ComId&&proId=@product.ProId" class="btn btn-sm btn-danger"><i class="icon-remove"></i></a>
                                     }
                                 </div>
                                 <div class="clearfix">
