@@ -176,18 +176,27 @@ namespace STTSoft.Controllers
         [HttpPost]
         public ActionResult Account(string username)
         {
-            username = Request.Params["username"];
-            var account = db.Accounts.Single(ac => ac.AccName == username);
-            string email = Request.Params["email"];
-            string phone = Request.Params["phone"];
-            string action = Request.Params["Edit"];
-            if ("Save".Equals(action))
+            try
             {
-                account.AccMail = email;
-                account.AccPhone = phone;
-                db.SubmitChanges();
-                return Redirect(Request.UrlReferrer.ToString());
+                username = Request.Params["username"];
+                var account = db.Accounts.Single(ac => ac.AccName == username);
+                string email = Request.Params["email"];
+                string phone = Request.Params["phone"];
+                string action = Request.Params["Edit"];
+                if ("Save".Equals(action))
+                {
+                    account.AccMail = email;
+                    account.AccPhone = phone;
+                    db.SubmitChanges();
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
             }
+            catch (NotImplementedException)
+            {
+                
+                return View("Error");
+            }
+           
             return View();
         }
 

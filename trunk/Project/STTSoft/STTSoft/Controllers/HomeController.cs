@@ -146,19 +146,28 @@ namespace STTSoft.Controllers
         [HttpPost]
         public ActionResult Search()
         {
-            string txtName = Request.Params["search"];
-            string txtPriceFrom = Request.Params["pricefrom"];
-            string txtPriceTo = Request.Params["priceto"];
-            if (txtPriceFrom.Equals(""))
+            try
             {
-                txtPriceFrom = (-int.MaxValue).ToString();
+                string txtName = Request.Params["search"];
+                string txtPriceFrom = Request.Params["pricefrom"];
+                string txtPriceTo = Request.Params["priceto"];
+                if (txtPriceFrom.Equals(""))
+                {
+                    txtPriceFrom = (-double.MaxValue).ToString();
+                }
+                if (txtPriceTo.Equals(""))
+                {
+                    txtPriceTo = (double.MaxValue).ToString();
+                }
+                var result = (from p in db.Products where p.ProPrice >= Convert.ToDouble(txtPriceFrom) && p.ProPrice <= Convert.ToDouble(txtPriceTo) && p.ProName.Contains(txtName) select p);
+                ViewBag.listSearch = result.ToList<Product>();
             }
-            if (txtPriceTo.Equals(""))
+            catch (NotImplementedException)
             {
-                txtPriceTo = (int.MaxValue).ToString();
+                
+                return View("Error");
             }
-            var result = (from p in db.Products where p.ProPrice >= Convert.ToInt32(txtPriceFrom) && p.ProPrice <= Convert.ToInt32(txtPriceTo) && p.ProName.Contains(txtName) select p);
-            ViewBag.listSearch = result.ToList<Product>();
+            
             return View("IndexSearch");
         }
 
