@@ -8,19 +8,7 @@
 @model STTSoft.Models.OrOrdProModel
            
 <form action="/Admin/OrderEdit" method="POST">     
-    Name: @Model.Order.AccName <br/>
-    Date: @Model.Order.OrDate <br/>
-    Product: @Model.Product.ProName <br/>
-    Saler: @Model.OrderDetail.OrdSaler <br/>
-    Image: @Model.Product.ProImage <br/>
-    Price: @Model.Product.ProPrice <br/>
-    <input type="hidden" name="txtOrdId" value="@Model.OrderDetail.OrdId"/>
-    Quantity: <input name="txtQantity" value="@Model.OrderDetail.OrdQuantity"/>
-    <button type="submit"  class="btn btn-primary">Submit</button>
-</form>  
-
-
-    <table class="table-hover">
+       <table class="table-hover">
         <tr>
             <td>Name
             </td>
@@ -78,3 +66,6 @@
 
         </tr>
     </table>
+</form>  
+
+
