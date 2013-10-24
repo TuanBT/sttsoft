@@ -53,7 +53,7 @@
         <p>@product.ProDetail</p>
     </div>
 </div>
-<form action="/Home/PostComment" method="POST">
+
 <div class="row">
     <div class="col-md-12">
         <div class="widget wgreen">
@@ -72,24 +72,24 @@
                     <div class="widget-content">
                         <div class="padd">
                             <div class="user">
-                                  <div class="col-md-9">
-                                <div class="user-pic">
-                                    <!-- User pic -->
-                                    <a href="#">
-                                        <img src="../Content/img/user.jpg" alt=""></a>
+                                <div class="col-md-9">
+                                    <div class="user-pic">
+                                        <!-- User pic -->
+                                        <a href="#">
+                                            <img src="../Content/img/user.jpg" alt=""></a>
+                                    </div>
+                                    <div class="user-details">
+                                        <h6>
+                                            User <a class="text-danger">@item.AccName</a>
+                                        </h6>
+                                        <p>
+                                            @item.ComContent</p>
+                                    </div>
                                 </div>
-                                      <div class="user-details">
-                                          <h6>
-                                                 User <a class="text-danger">@item.AccName</a>
-                                          </h6>
-                                          <p>
-                                              @item.ComContent</p>
-                                      </div>
-                                      </div>
                                 <div class="col-md-3">
                                     @if ((string) Session["role"] == "A")
                                     {
-                                        <button class="btn btn-sm btn-danger"><i class="icon-remove"></i> </button>
+                                        <a href="/Home/DeleteComment?comId=@item.ComId&&proId=@product.ProId" class="btn btn-sm btn-danger"><i class="icon-remove"></i></a>
                                     }
                                 </div>
                                 <div class="clearfix">
@@ -103,6 +103,7 @@
         </div>
     </div>
 </div>
+<form action="/Home/PostComment" method="POST">
 <div class="row">
     <div class="col-md-8">
         <div class="widget wgreen">
