@@ -6,12 +6,49 @@
 <h2>ProductEdit</h2>
 
 @model STTSoft.Models.Product
-
 <form action="/Admin/ProductEdit" method="POST">
-    ID :  <input name="txtproId" value="@Model.ProId"/>   <br/>
-    Name: <input name="txtName" value="@Model.ProName"/><br/>
-    Detail: <input name="txtDetail" value="@Model.ProDetail"/><br/>
-    Image: <input name="txtImage" value="@Model.ProImage"/><br/>
-    Price: <input name="txtPrice" value="@Model.ProPrice"/><br/>
-    <button type="submit"  class="btn btn-primary">Submit</button>
-</form>  
+
+    <table class="table-hover">
+        <tr>
+            <td>ID
+            </td>
+            <td>
+                <input name="txtproId" value="@Model.ProId"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Name
+            </td>
+            <td>
+                <input name="txtName" value="@Model.ProName"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Detail
+            </td>
+            <td>
+                <input name="txtDetail" value="@Model.ProDetail"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Image
+            </td>
+            <td>
+                <input name="txtImage" value="@Model.ProImage"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Price
+            </td>
+            <td>
+                <input name="txtPrice" value="@Model.ProPrice"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" class="btn btn-primary">
+                    Submit</button></td>
+
+        </tr>
+    </table>
+</form>
