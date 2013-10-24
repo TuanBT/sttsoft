@@ -24,13 +24,14 @@ namespace STTSoft.Controllers
 
         public ActionResult ProductInsert()
         {
-            return View();
+            var listCatalog = db.Categories.ToList();
+            return View(listCatalog);
         }
 
         [HttpPost]
-        public ActionResult ProductInsert(string txtName, string txtDetail, string txtImage, double txtPrice)
+        public ActionResult ProductInsert(string txtName, string txtDetail, string txtImage, string txtPrice, string ddlCatId)
         {
-            if (service.ProductInsert(txtName, txtDetail, txtImage, Convert.ToDouble(txtPrice)))
+            if (service.ProductInsert(txtName, txtDetail, txtImage, Convert.ToDouble(txtPrice),Convert.ToInt32(ddlCatId)))
             {
                 return RedirectToAction("ProductList", "Admin");
             }
