@@ -100,7 +100,7 @@
                         }
                         else
                         {
-                             <ul class="dropdown-menu">
+                            <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("Login", "Account")"><i class="icon-off"></i>Login</a></li>
                                 <li><a href="@Url.Action("Register", "Account")"><i class="icon-off"></i>Register</a></li>
                             </ul>
@@ -114,11 +114,11 @@
 
                     <!-- Message button with number of latest messages count-->
                     <li class="dropdown dropdown-big">
-                        <a class="dropdown-toggle" href="/Cart/ShopingCart" >
-                            <i class="icon-coffee"></i>Giỏ hàng <span class="badge badge-important">@Html.Action("BasketPartialView","Home")</span>
+                        <a class="dropdown-toggle" href="/Cart/ShopingCart">
+                            <i class="icon-coffee"></i>Giỏ hàng <span class="badge badge-important">@Html.Action("BasketPartialView", "Home")</span>
                         </a>
 
-                        
+
                     </li>
 
                     <!-- Members button with number of latest members count -->
@@ -204,7 +204,7 @@
                         </a>
 
                         <ul>
-                            <li>@{Html.RenderAction("GenreMenu","Home");}</li>
+                            <li>@{Html.RenderAction("GenreMenu", "Home");}</li>
                         </ul>
                     </li>
                     @if (Session["username"] != null)
@@ -221,8 +221,7 @@
                                 <li><a href="@Url.Action("ProductList", "Admin")">Quản lý sản phẩm</a></li>
                                 <li><a href="@Url.Action("CatalogList", "Admin")">Quản lý danh mục</a></li>
                                 <li><a href="@Url.Action("AccountList", "Admin")">Quản lý tài khoản</a></li>
-                                <li><a href="@Url.Action("OrderList", "Admin")">Quản lý order</a></li>
-                                 <li><a href="@Url.Action("BankList", "Admin")">Quản lý ngân hàng</a></li>
+                                <li><a href="@Url.Action("BankList", "Admin")">Quản lý ngân hàng</a></li>
                             </ul>
                         </li>
                         }
@@ -263,7 +262,7 @@
         <!-- Main bar -->
         <div class="mainbar">
 
-         
+
 
 
 
@@ -272,7 +271,7 @@
             <div class="matter">
                 <div class="container">
 
-                  @RenderBody()
+                    @RenderBody()
 
 
                 </div>
