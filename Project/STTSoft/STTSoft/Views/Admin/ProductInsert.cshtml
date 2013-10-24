@@ -2,6 +2,8 @@
     ViewBag.Title = "ProductInsert";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@model List<STTSoft.Models.Category>
 @if ((string)Session["role"] == "A")
 {
     <h2>ProductInsert</h2>
@@ -34,7 +36,19 @@
                 </td>
                 <td>
                     <input name="txtPrice" id="numberProduct" value="" />
-                     <span id="numberProductError" class="red"></span>
+                    <span id="numberProductError" class="red"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Category
+                </td>
+                <td>
+                    <select name="ddlCatId">
+                        @foreach (var catalog in Model)
+                        {
+                            <option value="@catalog.CatId">@catalog.CatName</option>
+                        }
+                    </select>
                 </td>
             </tr>
             <tr>
