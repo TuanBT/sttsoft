@@ -51,18 +51,24 @@
                                     <h6>@Model.AccRole</h6>
                                 </div>
                             </div>
+                            @if (Session["username"] != null)
+                            {
+                                if((string)Session["role"] == "D")
+                                {
                             <div class="form-group">
                                 <label class="control-label col-lg-3" for="telephone">Level</label>
                                 <div class="col-lg-6">
                                     <h6>@Model.AccLevel</h6>
                                 </div>
                             </div>
-                              <div class="form-group">
-                                <label class="control-label col-lg-3" for="telephone">Bank</label>
-                                <div class="col-lg-6">
-                                    <h6>@Model.Bank.BanMoney<span style="color: red">  VND</span></h6>
-                                </div>
-                            </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-3" for="telephone">Bank</label>
+                                        <div class="col-lg-6">
+                                            <h6>@Model.Bank.BanMoney<span style="color: red">  VND</span></h6>
+                                        </div>
+                                    </div>
+                                }
+                            }
                            @* <!-- Password -->
                             <div class="form-group">
                                 <label class="control-label col-lg-3" for="password2">Password</label>
