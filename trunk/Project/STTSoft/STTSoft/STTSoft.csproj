@@ -433,6 +433,7 @@
     </Content>
     <Content Include="Views\Account\Account.cshtml" />
     <Content Include="Views\Home\IndexSearch.cshtml" />
+    <Content Include="Views\Admin\OrderDaiLyList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
